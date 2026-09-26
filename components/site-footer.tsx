@@ -32,6 +32,8 @@ export function SiteFooter() {
               <li key={social.href}>
                 <a
                   href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   aria-label={social.label}
                   className="block transition-colors hover:text-foreground"
                 >

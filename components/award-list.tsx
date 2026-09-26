@@ -13,6 +13,8 @@ export function AwardList() {
               {award.href ? (
                 <a
                   href={award.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="underline underline-offset-4 transition-colors hover:text-accent"
                 >
                   {award.title}

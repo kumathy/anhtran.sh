@@ -19,6 +19,8 @@ export function ExperienceList() {
                 {role.href ? (
                   <a
                     href={role.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="underline underline-offset-4 transition-colors hover:text-accent"
                   >
                     {role.company}

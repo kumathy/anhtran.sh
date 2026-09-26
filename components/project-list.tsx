@@ -20,6 +20,8 @@ function ProjectItem({ project }: { project: Project }) {
           {project.href ? (
             <a
               href={project.href}
+              target="_blank"
+              rel="noopener noreferrer"
               className="text-accent underline underline-offset-4 transition-colors hover:text-foreground"
             >
               Demo ↗
@@ -28,6 +30,8 @@ function ProjectItem({ project }: { project: Project }) {
           {project.source ? (
             <a
               href={project.source}
+              target="_blank"
+              rel="noopener noreferrer"
               className="transition-colors hover:text-foreground"
             >
               Source ↗

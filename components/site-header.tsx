@@ -39,6 +39,8 @@ export function SiteHeader() {
         })}
         <a
           href={site.resume}
+          target="_blank"
+          rel="noopener noreferrer"
           className="transition-colors hover:text-foreground"
         >
           resume

@@ -14,6 +14,8 @@ export default function Home() {
         I&rsquo;m a Computer Science graduate @{" "}
         <a
           href={site.schoolUrl}
+          target="_blank"
+          rel="noopener noreferrer"
           className="underline underline-offset-4 transition-colors hover:text-accent"
         >
           {site.school}
@@ -21,6 +23,8 @@ export default function Home() {
         . I previously worked as a junior SDET and software engineer at{" "}
         <a
           href="https://sonraisecurity.com/"
+          target="_blank"
+          rel="noopener noreferrer"
           className="underline underline-offset-4 transition-colors hover:text-accent"
         >
           Sonrai Security
@@ -32,6 +36,8 @@ export default function Home() {
         Outside of work, I have a great passion for{" "}
         <a
           href="https://en.wikipedia.org/wiki/Fighting_game"
+          target="_blank"
+          rel="noopener noreferrer"
           className="underline underline-offset-4 transition-colors hover:text-accent"
         >
           fighting games
@@ -40,6 +46,8 @@ export default function Home() {
         <span className="group relative inline-block">
           <a
             href="https://www.youtube.com/watch?v=JzS96auqau0"
+            target="_blank"
+            rel="noopener noreferrer"
             className="underline underline-offset-4 transition-colors hover:text-accent"
           >
             FGC
