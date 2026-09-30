@@ -13,7 +13,7 @@ const nav = [
 ];
 
 export function SiteHeader() {
-  const pathname = usePathname();
+  const pathname = usePathname().replace(/(.)\/$/, "$1");
 
   return (
     <header className="mx-auto w-full max-w-2xl px-6 pt-12 pb-10">

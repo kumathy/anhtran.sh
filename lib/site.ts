@@ -6,7 +6,7 @@ export const site = {
   grad: "BCS 2026",
   url: "https://example.com",
   email: "tranlamtuananh2003@gmail.com",
-  resume: "/static/Anh_Tran_resume.pdf",
+  resume: `${process.env.BASE_PATH}/static/Anh_Tran_resume.pdf`,
   socials: [
     { label: "GitHub", href: "https://github.com/kumathy" },
     { label: "LinkedIn", href: "https://linkedin.com/in/kumathy" },

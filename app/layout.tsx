@@ -21,8 +21,8 @@ export const metadata: Metadata = {
   title: site.name,
   description: `${site.role}. ${site.school} ${site.grad}.`,
   icons: {
-    icon: "/images/favicon.png",
-    apple: "/images/favicon.png",
+    icon: `${process.env.BASE_PATH}/images/favicon.png`,
+    apple: `${process.env.BASE_PATH}/images/favicon.png`,
   },
 };
 
