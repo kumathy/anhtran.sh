@@ -7,7 +7,7 @@ export function Section({
 }) {
   return (
     <section className="mt-16">
-      <h2 className="border-b border-border pb-4 text-xs tracking-widest text-muted uppercase">
+      <h2 className="border-b border-border pb-4 text-sm font-medium text-muted">
         {title}
       </h2>
       <div className="mt-6">{children}</div>

@@ -6,7 +6,7 @@ function ProjectItem({ project }: { project: Project }) {
     <li className="border-t border-border py-6 first:border-t-0">
       <div className="flex items-baseline justify-between gap-4">
         <h3 className="font-medium">{project.title}</h3>
-        <span className="shrink-0 font-mono text-xs text-muted">
+        <span className="shrink-0 text-xs text-muted">
           {project.year}
         </span>
       </div>
@@ -16,7 +16,7 @@ function ProjectItem({ project }: { project: Project }) {
       <div className="mt-3 flex flex-wrap items-center justify-between gap-x-4 gap-y-2">
         <TechList items={project.stack} />
 
-        <div className="flex shrink-0 items-center gap-x-4 font-mono text-xs text-muted">
+        <div className="flex shrink-0 items-center gap-x-4 text-xs text-muted">
           {project.href ? (
             <a
               href={project.href}

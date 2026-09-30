@@ -29,10 +29,10 @@ export function ExperienceList() {
               </h3>
 
               <div className="flex shrink-0 items-baseline gap-3">
-                <span className="font-mono text-xs text-muted">
+                <span className="text-xs text-muted">
                   {role.period}
                 </span>
-                <span className="inline-block font-mono text-xs text-muted transition group-open:rotate-90 group-hover/row:text-foreground">
+                <span className="inline-block text-xs text-muted transition group-open:rotate-90 group-hover/row:text-foreground">
                   &rsaquo;
                 </span>
               </div>

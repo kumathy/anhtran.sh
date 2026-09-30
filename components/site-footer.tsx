@@ -9,7 +9,7 @@ export function SiteFooter() {
         <p>
           © {updated.getFullYear()} {site.name}
         </p>
-        <p className="font-mono text-xs">
+        <p className="text-xs">
           Updated{" "}
           <time dateTime={updated.toISOString()}>
             {updated.toLocaleDateString("en-US", {

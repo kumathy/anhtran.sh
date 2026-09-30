@@ -9,7 +9,7 @@ export function AwardList() {
           className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between sm:gap-6"
         >
           <div>
-            <span className="font-medium">
+            <span>
               {award.href ? (
                 <a
                   href={award.href}
@@ -27,7 +27,7 @@ export function AwardList() {
               <p className="mt-1 text-sm text-muted">{award.note}</p>
             ) : null}
           </div>
-          <span className="shrink-0 font-mono text-xs text-muted">
+          <span className="shrink-0 text-xs text-muted">
             {award.period}
           </span>
         </li>

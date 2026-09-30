@@ -17,7 +17,6 @@
   --color-border: var(--border);
   --color-accent: var(--accent);
   --font-sans: var(--font-outfit);
-  --font-mono: var(--font-geist-mono);
   --animate-slide-down: slide-down 200ms ease-out;
 }
 
