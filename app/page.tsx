@@ -1,3 +1,4 @@
+import { VN } from "country-flag-icons/react/3x2";
 import type { IconType } from "react-icons";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { LuFileText } from "react-icons/lu";
@@ -21,7 +22,14 @@ export default function Home() {
       </h1>
 
       <p className="mt-4 text-lg leading-relaxed text-pretty">
-        I&rsquo;m a Computer Science graduate @{" "}
+        I&rsquo;m a{" "}
+        <VN
+          title="Vietnamese"
+          role="img"
+          aria-label="Vietnamese"
+          className="inline-block mx-0.5 h-[1.1cap] w-[1.65cap] rounded-sm align-[-0.05cap] [&>path:nth-of-type(1)]:fill-[#c94a3a] [&>path:nth-of-type(2)]:fill-[#f5d25a]"
+        />{" "}
+        Computer Science graduate @{" "}
         <a
           href={site.schoolUrl}
           target="_blank"
