@@ -10,7 +10,7 @@ export function AwardList() {
           className="flex items-baseline justify-between gap-4"
         >
           <div>
-            <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+            <div className="flex flex-col items-start gap-y-1 sm:flex-row sm:flex-wrap sm:items-baseline sm:gap-x-3">
               {award.shortTitle ? (
                 <span>
                   <span className="sm:hidden">{award.shortTitle}</span>
