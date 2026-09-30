@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ThemeToggle } from "@/components/theme-toggle";
-import { site } from "@/lib/site";
 
 const nav = [
   { href: "/", label: "home" },
@@ -17,8 +16,8 @@ export function SiteHeader() {
 
   return (
     <header className="mx-auto w-full max-w-2xl px-6 pt-12 pb-10">
-      <div className="flex items-center justify-between gap-6 border-b border-border pb-6">
-        <nav className="flex gap-5 text-sm text-muted">
+      <div className="flex items-start justify-between gap-6 border-b border-border pb-6">
+        <nav className="flex flex-wrap gap-x-5 gap-y-2 text-sm text-muted">
         {nav.map((item) => {
           const active = pathname === item.href;
 
@@ -37,14 +36,6 @@ export function SiteHeader() {
             </Link>
           );
         })}
-        <a
-          href={site.resume}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="transition-colors hover:text-foreground"
-        >
-          resume
-        </a>
         </nav>
 
         <ThemeToggle />

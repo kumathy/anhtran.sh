@@ -1,7 +1,16 @@
+import type { IconType } from "react-icons";
+import { FaGithub, FaLinkedin } from "react-icons/fa";
+import { LuFileText } from "react-icons/lu";
 import { AwardList } from "@/components/award-list";
+import { CopyEmailButton } from "@/components/copy-email-button";
 import { RainbowText } from "@/components/rainbow-text";
 import { Section } from "@/components/section";
 import { site } from "@/lib/site";
+
+const socialIcons: Record<string, IconType> = {
+  GitHub: FaGithub,
+  LinkedIn: FaLinkedin,
+};
 
 export default function Home() {
   return (
@@ -71,6 +80,42 @@ export default function Home() {
       <p className="mt-4 text-lg leading-relaxed text-pretty">
         I am currently open to any full-time software engineer/SDET roles.
       </p>
+
+      <div className="mt-6 flex flex-wrap items-center gap-3">
+        <a
+          href={site.resume}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-2 rounded-full border-2 border-border px-4 py-2 text-sm font-medium transition hover:border-accent hover:text-accent active:scale-95"
+        >
+          <LuFileText className="h-4 w-4" strokeWidth={1.5} aria-hidden="true" />
+          Resume
+        </a>
+
+        <CopyEmailButton />
+
+        {site.socials.map((social) => {
+          const Icon = socialIcons[social.label];
+
+          return (
+            <a
+              key={social.href}
+              href={social.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={social.label}
+              title={social.label}
+              className="inline-flex h-10 w-10 items-center justify-center rounded-full border-2 border-border transition hover:border-accent hover:text-accent active:scale-95"
+            >
+              {Icon ? (
+                <Icon className="h-4 w-4" aria-hidden="true" />
+              ) : (
+                <span className="text-xs">{social.label}</span>
+              )}
+            </a>
+          );
+        })}
+      </div>
 
       <Section title="Awards &amp; certifications">
         <AwardList />
