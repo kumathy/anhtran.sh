@@ -38,7 +38,7 @@ export default function Home() {
         >
           {site.school}
         </a>
-        . I previously worked as a junior SDET and software engineer at{" "}
+        . I previously worked as a junior SDET and software engineer @{" "}
         <a
           href="https://sonraisecurity.com/"
           target="_blank"
