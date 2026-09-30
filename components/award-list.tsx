@@ -1,3 +1,4 @@
+import { LuExternalLink } from "react-icons/lu";
 import { awards } from "@/content/awards";
 
 export function AwardList() {
@@ -9,20 +10,27 @@ export function AwardList() {
           className="flex items-baseline justify-between gap-4"
         >
           <div>
-            <span>
-              {award.href ? (
+            <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+              {award.shortTitle ? (
+                <span>
+                  <span className="sm:hidden">{award.shortTitle}</span>
+                  <span className="hidden sm:inline">{award.title}</span>
+                </span>
+              ) : (
+                <span>{award.title}</span>
+              )}
+              {award.link ? (
                 <a
-                  href={award.href}
+                  href={award.link.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="underline decoration-2 underline-offset-6 transition-colors hover:text-accent"
+                  className="inline-flex items-center gap-1 text-sm text-muted transition-colors hover:text-foreground"
                 >
-                  {award.title}
+                  {award.link.label}
+                  <LuExternalLink className="h-3.5 w-3.5" aria-hidden="true" />
                 </a>
-              ) : (
-                award.title
-              )}
-            </span>
+              ) : null}
+            </div>
             {award.note ? (
               <p className="mt-1 text-sm text-muted">{award.note}</p>
             ) : null}

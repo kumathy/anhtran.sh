@@ -1,3 +1,4 @@
+import { LuExternalLink } from "react-icons/lu";
 import { TechList } from "@/components/tech-list";
 import type { Project } from "@/content/projects";
 
@@ -22,9 +23,10 @@ function ProjectItem({ project }: { project: Project }) {
               href={project.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-accent underline decoration-2 underline-offset-6 transition-colors hover:text-foreground"
+              className="inline-flex items-center gap-1 text-accent underline decoration-2 underline-offset-6 transition-colors hover:text-foreground"
             >
-              Demo ↗
+              Demo
+              <LuExternalLink className="h-3 w-3" aria-hidden="true" />
             </a>
           ) : null}
           {project.source ? (
@@ -32,9 +34,10 @@ function ProjectItem({ project }: { project: Project }) {
               href={project.source}
               target="_blank"
               rel="noopener noreferrer"
-              className="transition-colors hover:text-foreground"
+              className="inline-flex items-center gap-1 transition-colors hover:text-foreground"
             >
-              Source ↗
+              Source
+              <LuExternalLink className="h-3 w-3" aria-hidden="true" />
             </a>
           ) : null}
         </div>

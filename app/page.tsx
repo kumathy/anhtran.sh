@@ -117,7 +117,7 @@ export default function Home() {
         </a>
       </div>
 
-      <Section title="Awards &amp; certifications">
+      <Section title="Highlights">
         <AwardList />
       </Section>
     </main>
