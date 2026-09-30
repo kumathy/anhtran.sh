@@ -7,6 +7,7 @@
   --foreground: #2c2a27;
   --muted: #6f6960;
   --border: #d8cdc0;
+  --surface: #eee6dd;
   --accent: #7a5745;
 }
 
@@ -15,6 +16,7 @@
   --color-foreground: var(--foreground);
   --color-muted: var(--muted);
   --color-border: var(--border);
+  --color-surface: var(--surface);
   --color-accent: var(--accent);
   --font-sans: var(--font-outfit);
   --animate-slide-down: slide-down 200ms ease-out;
@@ -57,6 +59,7 @@ details[open]::details-content {
     --foreground: #ede9e4;
     --muted: #9b9188;
     --border: #2b2622;
+    --surface: #211e1d;
     --accent: #c9997c;
   }
 }
@@ -66,6 +69,7 @@ details[open]::details-content {
   --foreground: #ede9e4;
   --muted: #9b9188;
   --border: #2b2622;
+  --surface: #211e1d;
   --accent: #c9997c;
 }
 

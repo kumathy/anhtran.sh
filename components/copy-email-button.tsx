@@ -40,11 +40,11 @@ export function CopyEmailButton() {
 
       <span
         aria-hidden="true"
-        className={`pointer-events-none absolute top-full left-0 z-10 mt-2 rounded-full border-2 border-border bg-background px-3 py-1.5 text-sm whitespace-nowrap text-muted transition duration-200 ease-out ${
+        className={`pointer-events-none absolute top-full left-0 z-10 mt-3 sm:left-1/2 sm:-translate-x-1/2 rounded-full border-2 border-border bg-surface px-3 py-1.5 text-sm whitespace-nowrap text-foreground transition duration-200 ease-out ${
           copied ? "translate-y-0 opacity-100" : "-translate-y-1 opacity-0"
         }`}
       >
-        <TooltipArrow className="left-4.5" />
+        <TooltipArrow className="left-4.5 sm:left-1/2" />
         Email copied
       </span>
 
