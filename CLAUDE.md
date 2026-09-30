@@ -10,10 +10,10 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 
 ## Design
 
-Minimal and typographic: a single 672px column, monochrome plus one accent, Geist Sans for prose and Geist Mono for dates, tech lists, and section labels. No shadows, gradients, images, or animation beyond color transitions.
+Minimal and typographic: a single 672px column, monochrome plus one accent, Outfit for all text. No mono and no all caps. Bold only for the homepage greeting, page and section headings, and experience and project names. Lines, borders, and underlines are 2px. No shadows, gradients, or images; the flag in the intro is the one exception.
 
-- Every clickable element gets hover, `focus-visible`, and active states.
-- Only animate `transform` and `opacity`. Never `transition-all`.
+- Every clickable element gets hover and `focus-visible` states.
+- Only animate `transform`, `opacity`, and color. The experience rows' open and close height is the one exception. Never `transition-all`.
 - Use the spacing scale consistently rather than arbitrary steps.
 - The accent is never default Tailwind blue or indigo.
 

@@ -103,7 +103,7 @@ export default function Home() {
               rel="noopener noreferrer"
               aria-label={social.label}
               title={social.label}
-              className="inline-flex h-10 w-10 items-center justify-center rounded-full border-2 border-border transition hover:border-accent hover:text-accent active:scale-95"
+              className="inline-flex h-10 w-10 items-center justify-center rounded-full border-2 border-border transition hover:border-accent hover:text-accent"
             >
               {Icon ? (
                 <Icon className="h-4 w-4" aria-hidden="true" />
@@ -118,7 +118,7 @@ export default function Home() {
           href={site.resume}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 rounded-full border-2 border-border px-4 py-2 text-sm transition hover:border-accent hover:text-accent active:scale-95"
+          className="inline-flex items-center gap-2 rounded-full border-2 border-border px-4 py-2 text-sm transition hover:border-accent hover:text-accent"
         >
           <LuFileText className="h-4 w-4" strokeWidth={1.5} aria-hidden="true" />
           Resume

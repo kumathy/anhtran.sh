@@ -21,7 +21,10 @@ export const experience: Role[] = [
     ],
     href: "https://sonraisecurity.com/",
     notes: [
-      "Automated 3 regression workflows, eliminate 20+ manual test cases — owned 60-70% of regression suite each sprint",
+      "Automated 3 manual regression workflows in Python covering environment setup, CloudFormation deploys, and AWS Organizations policy validation, eliminating 20+ recurring test cases",
+      "Executed 60–70% of the regression suite each sprint, validating releases across AWS and GCP",
+      "Reworked automation scripts to auto-discover their configuration, removing manual setup entirely",
+      "Documented setup, authentication, and command references for 6 test categories in Confluence",
     ],
   },
   {
@@ -31,7 +34,8 @@ export const experience: Role[] = [
     href: "https://sonraisecurity.com/",
     technologies: ["Python", "Slack API", "Grafana", "AWS", "GCP"],
     notes: [
-      "Built production alerting with AWS Lambda querying Grafana and routing to Slack, cut detection of stalled/failed jobs from up to a day to minutes",
+      "Resolved 100+ vulnerability tickets and 20 product defects spanning back-end services and dashboard functionality",
+      "Automated production alerting with an AWS Lambda function querying Prometheus and routing failures to Slack, cutting detection of stalled or failed jobs from up to a day to minutes",
     ],
   },
   {
@@ -40,7 +44,10 @@ export const experience: Role[] = [
     period: "Sep - Dec 2022",
     href: "https://sprypoint.com/",
     technologies: ["JavaScript", "KnockoutJS", "Bootstrap", "PostgreSQL"],
-    notes: ["Frontend work on Bootstrap UIs with PostgreSQL data"],
+    notes: [
+      "Built data-driven UI components from a designer’s Figma mockups, including multi-option selectors and date pickers populated from PostgreSQL",
+      "Fixed front-end and back-end defects, going directly to the maintainer of an open-source date picker library for implementation guidance",
+    ],
   },
   {
     company: "University of New Brunswick",
@@ -48,6 +55,9 @@ export const experience: Role[] = [
     period: "Fall 2023, Winter 2025",
     href: "https://www.unb.ca/",
     technologies: ["Java", "JavaScript", "Python", "Octave", "Racket"],
-    notes: ["supervised lab sessions for 40+ and grading"],
+    notes: [
+      "Supported 40+ students per term across two terms of CS2043 (Software Engineering) and CS2613 (Programming Languages), grading weekly assignments and running lab sessions",
+      "Debugged student code in Python, JavaScript, Octave, and Racket (CS2613) and Java (CS2043) during supervised lab sessions",
+    ],
   },
 ];

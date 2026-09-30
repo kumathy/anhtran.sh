@@ -33,7 +33,7 @@ export function CopyEmailButton() {
         onClick={copy}
         aria-label="Copy email address"
         title={copied ? undefined : `Copy ${site.email}`}
-        className="inline-flex h-10 w-10 items-center justify-center rounded-full border-2 border-border transition hover:border-accent hover:text-accent active:scale-95"
+        className="inline-flex h-10 w-10 items-center justify-center rounded-full border-2 border-border transition hover:border-accent hover:text-accent"
       >
         <Icon className="h-4 w-4" strokeWidth={1.5} aria-hidden="true" />
       </button>

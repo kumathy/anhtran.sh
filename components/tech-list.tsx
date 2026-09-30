@@ -4,7 +4,7 @@ export function TechList({ items }: { items: string[] }) {
       {items.map((item) => (
         <li
           key={item}
-          className="rounded-full border-2 border-border px-2.5 py-0.5 text-xs text-muted transition-colors hover:border-muted hover:text-foreground"
+          className="rounded-full border-2 border-border px-2.5 py-0.5 text-xs text-muted"
         >
           {item}
         </li>
