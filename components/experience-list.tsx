@@ -53,9 +53,20 @@ export function ExperienceList() {
             <div className="min-h-0 overflow-hidden -translate-y-1 opacity-0 transition-[opacity,translate] duration-200 ease-out group-open:translate-y-0 group-open:animate-slide-down group-open:opacity-100 motion-reduce:transition-none">
               {role.notes?.length ? (
                 <ul className="mt-2 list-disc space-y-1 pl-5 text-muted">
-                  {role.notes.map((note) => (
-                    <li key={note}>{note}</li>
-                  ))}
+                  {role.notes.map((note) =>
+                    typeof note === "string" ? (
+                      <li key={note}>{note}</li>
+                    ) : (
+                      <li key={note.text}>
+                        {note.text}
+                        <ul className="mt-1 list-[circle] space-y-1 pl-5">
+                          {note.items.map((item) => (
+                            <li key={item}>{item}</li>
+                          ))}
+                        </ul>
+                      </li>
+                    ),
+                  )}
                 </ul>
               ) : null}
 

@@ -4,8 +4,10 @@ export type Role = {
   period: string;
   technologies: string[];
   href?: string;
-  notes?: string[];
+  notes?: Note[];
 };
+
+export type Note = string | { text: string; items: string[] };
 
 export const experience: Role[] = [
   {
@@ -56,7 +58,13 @@ export const experience: Role[] = [
     href: "https://www.unb.ca/",
     technologies: ["Java", "JavaScript", "Python", "Octave", "Racket"],
     notes: [
-      "Supported 40+ students per term across two terms of CS2043 (Software Engineering) and CS2613 (Programming Languages), grading weekly assignments and running lab sessions",
+      {
+        text: "Supported 40+ students per term across two terms, grading weekly assignments and running lab sessions for:",
+        items: [
+          "CS2043 (Introduction to Software Engineering)",
+          "CS2613 (Programming Languages Laboratory)",
+        ],
+      },
       "Debugged student code in Python, JavaScript, Octave, and Racket (CS2613) and Java (CS2043) during supervised lab sessions",
     ],
   },
