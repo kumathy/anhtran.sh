@@ -6,7 +6,7 @@ export function AwardList() {
       {awards.map((award) => (
         <li
           key={award.title}
-          className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between sm:gap-6"
+          className="flex items-baseline justify-between gap-4"
         >
           <div>
             <span>
