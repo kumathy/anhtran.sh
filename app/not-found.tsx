@@ -8,7 +8,7 @@ export default function NotFound() {
         That page doesn&rsquo;t exist.{" "}
         <Link
           href="/"
-          className="text-foreground underline underline-offset-4 transition-colors hover:text-accent"
+          className="text-foreground underline decoration-2 underline-offset-6 transition-colors hover:text-accent"
         >
           Back home
         </Link>

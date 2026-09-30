@@ -15,7 +15,7 @@ export function AwardList() {
                   href={award.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="underline underline-offset-4 transition-colors hover:text-accent"
+                  className="underline decoration-2 underline-offset-6 transition-colors hover:text-accent"
                 >
                   {award.title}
                 </a>

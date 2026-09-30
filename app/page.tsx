@@ -5,6 +5,7 @@ import { AwardList } from "@/components/award-list";
 import { CopyEmailButton } from "@/components/copy-email-button";
 import { RainbowText } from "@/components/rainbow-text";
 import { Section } from "@/components/section";
+import { TooltipArrow } from "@/components/tooltip-arrow";
 import { site } from "@/lib/site";
 
 const socialIcons: Record<string, IconType> = {
@@ -25,7 +26,7 @@ export default function Home() {
           href={site.schoolUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="underline underline-offset-4 transition-colors hover:text-accent"
+          className="underline decoration-2 underline-offset-6 transition-colors hover:text-accent"
         >
           {site.school}
         </a>
@@ -34,7 +35,7 @@ export default function Home() {
           href="https://sonraisecurity.com/"
           target="_blank"
           rel="noopener noreferrer"
-          className="underline underline-offset-4 transition-colors hover:text-accent"
+          className="underline decoration-2 underline-offset-6 transition-colors hover:text-accent"
         >
           Sonrai Security
         </a>
@@ -47,7 +48,7 @@ export default function Home() {
           href="https://en.wikipedia.org/wiki/Fighting_game"
           target="_blank"
           rel="noopener noreferrer"
-          className="underline underline-offset-4 transition-colors hover:text-accent"
+          className="underline decoration-2 underline-offset-6 transition-colors hover:text-accent"
         >
           fighting games
         </a>{" "}
@@ -57,18 +58,15 @@ export default function Home() {
             href="https://www.youtube.com/watch?v=JzS96auqau0"
             target="_blank"
             rel="noopener noreferrer"
-            className="underline underline-offset-4 transition-colors hover:text-accent"
+            className="underline decoration-2 underline-offset-6 transition-colors hover:text-accent"
           >
             FGC
           </a>
           <span
             role="tooltip"
-            className="pointer-events-none absolute top-full left-1/2 z-10 mt-2 flex -translate-x-1/2 -translate-y-1 items-center gap-1.5 rounded border border-border bg-background px-2.5 py-1.5 text-sm whitespace-nowrap text-muted opacity-0 transition duration-200 ease-out group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:translate-y-0 group-focus-within:opacity-100"
+            className="pointer-events-none absolute top-full left-1/2 z-10 mt-2 flex -translate-x-1/2 -translate-y-1 items-center gap-1.5 rounded-full border-2 border-border bg-background px-3 py-1.5 text-sm whitespace-nowrap text-muted opacity-0 transition duration-200 ease-out group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:translate-y-0 group-focus-within:opacity-100"
           >
-            <span
-              aria-hidden="true"
-              className="absolute -top-1.25 left-1/2 h-2.5 w-2.5 -translate-x-1/2 rotate-45 border-t border-l border-border bg-background"
-            />
+            <TooltipArrow className="left-1/2" />
             <span aria-hidden="true">🕹️</span>
             Fighting Game Community
           </span>
@@ -79,19 +77,11 @@ export default function Home() {
 
       <p className="mt-4 text-lg leading-relaxed text-pretty">
         I am currently open to any full-time software engineer/SDET roles.
+        <br />
+        Find me here:
       </p>
 
-      <div className="mt-6 flex flex-wrap items-center gap-3">
-        <a
-          href={site.resume}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 rounded-full border-2 border-border px-4 py-2 text-sm transition hover:border-accent hover:text-accent active:scale-95"
-        >
-          <LuFileText className="h-4 w-4" strokeWidth={1.5} aria-hidden="true" />
-          Resume
-        </a>
-
+      <div className="mt-4 flex flex-wrap items-center gap-3">
         <CopyEmailButton />
 
         {site.socials.map((social) => {
@@ -115,6 +105,16 @@ export default function Home() {
             </a>
           );
         })}
+
+        <a
+          href={site.resume}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-2 rounded-full border-2 border-border px-4 py-2 text-sm transition hover:border-accent hover:text-accent active:scale-95"
+        >
+          <LuFileText className="h-4 w-4" strokeWidth={1.5} aria-hidden="true" />
+          Resume
+        </a>
       </div>
 
       <Section title="Awards &amp; certifications">

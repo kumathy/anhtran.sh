@@ -8,7 +8,7 @@ export function ExperienceList() {
       {experience.map((role) => (
         <CollapsibleRow
           key={`${role.company}-${role.period}`}
-          className="group/row relative cursor-pointer rounded-md px-3 py-6 transition-colors before:absolute before:inset-x-3 before:top-0 before:h-px before:bg-border before:transition-opacity first:before:hidden hover:bg-foreground/5 hover:before:opacity-0 has-[summary:focus-visible]:bg-foreground/5 has-[summary:focus-visible]:before:opacity-0 active:bg-foreground/10 [li:hover+&]:before:opacity-0 [li:has(summary:focus-visible)+&]:before:opacity-0"
+          className="group/row relative cursor-pointer rounded-md px-3 py-6 transition-colors before:absolute before:inset-x-3 before:top-0 before:h-0.5 before:bg-border before:transition-opacity first:before:hidden hover:bg-foreground/5 hover:before:opacity-0 has-[summary:focus-visible]:bg-foreground/5 has-[summary:focus-visible]:before:opacity-0 active:bg-foreground/10 [li:hover+&]:before:opacity-0 [li:has(summary:focus-visible)+&]:before:opacity-0"
         >
           <details className="group">
             <summary className="flex cursor-pointer list-none items-baseline justify-between gap-4 [&::-webkit-details-marker]:hidden">
@@ -18,7 +18,7 @@ export function ExperienceList() {
                     href={role.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="underline underline-offset-4 transition-colors hover:text-accent"
+                    className="underline decoration-2 underline-offset-6 transition-colors hover:text-accent"
                   >
                     {role.company}
                   </a>

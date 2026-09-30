@@ -3,7 +3,7 @@ import type { Project } from "@/content/projects";
 
 function ProjectItem({ project }: { project: Project }) {
   return (
-    <li className="border-t border-border py-6 first:border-t-0">
+    <li className="border-t-2 border-border py-6 first:border-t-0">
       <div className="flex items-baseline justify-between gap-4">
         <h3 className="font-medium">{project.title}</h3>
         <span className="shrink-0 text-xs text-muted">
@@ -22,7 +22,7 @@ function ProjectItem({ project }: { project: Project }) {
               href={project.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-accent underline underline-offset-4 transition-colors hover:text-foreground"
+              className="text-accent underline decoration-2 underline-offset-6 transition-colors hover:text-foreground"
             >
               Demo ↗
             </a>
