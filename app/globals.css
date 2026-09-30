@@ -18,6 +18,38 @@
   --color-accent: var(--accent);
   --font-sans: var(--font-outfit);
   --font-mono: var(--font-geist-mono);
+  --animate-slide-down: slide-down 200ms ease-out;
+}
+
+@keyframes slide-down {
+  from {
+    opacity: 0;
+    transform: translateY(-0.25rem);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-slide-down {
+    animation: none;
+  }
+}
+
+details::details-content {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition:
+    grid-template-rows 200ms ease-out,
+    content-visibility 200ms allow-discrete;
+}
+
+details[open]::details-content {
+  grid-template-rows: 1fr;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  details::details-content {
+    transition: none;
+  }
 }
 
 @media (prefers-color-scheme: dark) {
