@@ -85,9 +85,9 @@ export default function Home() {
 
       <p className="mt-4 text-lg leading-relaxed text-pretty">
         I am currently open to any full-time software engineer/SDET roles.
-        <br />
-        Find me here:
       </p>
+
+      <p className="mt-4 text-lg leading-relaxed text-pretty">Find me here:</p>
 
       <div className="mt-4 flex flex-wrap items-center gap-3">
         <CopyEmailButton />
