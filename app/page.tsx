@@ -6,6 +6,7 @@ import { AwardList } from "@/components/award-list";
 import { CopyEmailButton } from "@/components/copy-email-button";
 import { Misc } from "@/components/misc";
 import { LocalTime } from "@/components/local-time";
+import { PageMain } from "@/components/page-main";
 import { RainbowText } from "@/components/rainbow-text";
 import { Section } from "@/components/section";
 import { site } from "@/lib/site";
@@ -17,7 +18,7 @@ const socialIcons: Record<string, IconType> = {
 
 export default function Home() {
   return (
-    <main className="mx-auto w-full max-w-2xl flex-1 px-6">
+    <PageMain>
       <h1 className="text-3xl font-medium tracking-tight">
         Hi, I&rsquo;m {site.name}!{" "}
       </h1>
@@ -144,6 +145,6 @@ export default function Home() {
       <Section title="Misc">
         <Misc />
       </Section>
-    </main>
+    </PageMain>
   );
 }

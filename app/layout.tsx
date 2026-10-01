@@ -41,9 +41,11 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     >
       <body className="flex min-h-full flex-col">
         <ThemeProvider>
-          <SiteHeader />
-          {children}
-          <SiteFooter />
+          <div className="flex flex-1 flex-col animate-page-in motion-reduce:animate-none">
+            <SiteHeader />
+            {children}
+            <SiteFooter />
+          </div>
         </ThemeProvider>
       </body>
     </html>
