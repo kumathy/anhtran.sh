@@ -22,13 +22,35 @@ const mplus = M_PLUS_1({
   preload: false,
 });
 
+const description = `${site.role}. ${site.school} ${site.grad}.`;
+const previewImage = {
+  url: `${site.url}/images/favicon.png`,
+  width: 512,
+  height: 512,
+  alt: site.name,
+};
+
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: site.name,
-  description: `${site.role}. ${site.school} ${site.grad}.`,
+  description,
   icons: {
     icon: `${process.env.BASE_PATH}/images/favicon.png`,
     apple: `${process.env.BASE_PATH}/images/favicon.png`,
+  },
+  openGraph: {
+    type: "website",
+    url: site.url,
+    siteName: site.name,
+    title: site.name,
+    description,
+    images: [previewImage],
+  },
+  twitter: {
+    card: "summary",
+    title: site.name,
+    description,
+    images: [previewImage],
   },
 };
 
