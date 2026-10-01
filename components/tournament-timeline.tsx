@@ -373,10 +373,8 @@ export function TournamentTimeline({
                     onClick={() => setPage(item)}
                     aria-label={`Page ${item + 1}`}
                     aria-current={item === page ? "page" : undefined}
-                    className={`inline-flex h-8 min-w-8 items-center justify-center rounded-full border-2 px-2 transition-colors hover:border-accent hover:text-accent ${
-                      item === page
-                        ? "border-accent text-accent"
-                        : "border-transparent text-muted"
+                    className={`inline-flex h-8 min-w-8 items-center justify-center px-2 transition-colors hover:text-accent ${
+                      item === page ? "text-accent" : "text-muted"
                     }`}
                   >
                     {item + 1}

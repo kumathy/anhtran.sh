@@ -41,7 +41,8 @@ export default async function HobbiesPage() {
 
       <p className="mt-4 text-lg leading-relaxed text-pretty">
         These days you&rsquo;ll find me at Green Door Smash, our local weekly.
-        If you&rsquo;re in Fredericton, come say hi!
+        If you&rsquo;re in Fredericton and ever feel like trying out fighting
+        games, come say hi!
       </p>
 
       <div className="mt-6">
