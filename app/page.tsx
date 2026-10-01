@@ -1,9 +1,10 @@
 import { VN } from "country-flag-icons/react/3x2";
 import type { IconType } from "react-icons";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
-import { LuFileText } from "react-icons/lu";
+import { LuFileText, LuMapPin } from "react-icons/lu";
 import { AwardList } from "@/components/award-list";
 import { CopyEmailButton } from "@/components/copy-email-button";
+import { LocalTime } from "@/components/local-time";
 import { RainbowText } from "@/components/rainbow-text";
 import { Section } from "@/components/section";
 import { site } from "@/lib/site";
@@ -19,6 +20,14 @@ export default function Home() {
       <h1 className="text-3xl font-medium tracking-tight">
         Hi, I&rsquo;m {site.name}!{" "}
       </h1>
+      <div className="mt-2 flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-muted">
+        <span className="inline-flex items-center gap-1.5">
+          <LuMapPin className="h-3.5 w-3.5" aria-hidden="true" />
+          <span className="sr-only">Based in </span>
+          Fredericton, NB
+        </span>
+        <LocalTime />
+      </div>
 
       <p className="mt-4 text-lg leading-relaxed text-pretty">
         I&rsquo;m a{" "}
