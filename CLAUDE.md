@@ -10,7 +10,7 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 
 ## Design
 
-Minimal and typographic: a single 672px column, monochrome plus one accent, Outfit for all text. No mono and no all caps. Bold only for the homepage greeting, page and section headings, and experience and project names. Lines, borders, and underlines are 2px. No shadows, gradients, or images; the flag in the intro is the one exception.
+Minimal and typographic: a single 672px column, monochrome plus one accent, Outfit for all text. No mono and no all caps. Bold only for the homepage greeting, page and section headings, and experience and project names. Lines, borders, and underlines are 2px. No shadows or gradients. Images only where they are the content: the flag in the intro, album covers in the music player, and project screenshots in the project modal.
 
 - Every clickable element gets hover and `focus-visible` states.
 - Only animate `transform`, `opacity`, and color. The experience rows' open and close height is the one exception. Never `transition-all`.
