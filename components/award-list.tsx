@@ -11,14 +11,7 @@ export function AwardList() {
         >
           <div>
             <div className="flex flex-col items-start gap-y-1 sm:flex-row sm:flex-wrap sm:items-baseline sm:gap-x-3">
-              {award.shortTitle ? (
-                <span>
-                  <span className="sm:hidden">{award.shortTitle}</span>
-                  <span className="hidden sm:inline">{award.title}</span>
-                </span>
-              ) : (
-                <span>{award.title}</span>
-              )}
+              <span>{award.title}</span>
               {award.link ? (
                 <a
                   href={award.link.href}

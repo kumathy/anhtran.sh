@@ -1,6 +1,5 @@
 export type Award = {
   title: string;
-  shortTitle?: string;
   period: string;
   link?: {
     label: string;
@@ -17,13 +16,11 @@ export const awards: Award[] = [
   },
   {
     title: "1st @ UNB Research Expo Pitch Competition",
-    shortTitle: "1st @ UNB Research Expo Pitch Comp",
     period: "Apr 2026",
     link: { label: "Post", href: "https://lnkd.in/p/gPPrPtF5" },
   },
   {
     title: "Impact Award @ RBC Student Pitch Competition",
-    shortTitle: "Impact Award @ RBC Student Pitch Comp",
     period: "Mar 2026",
     link: { label: "Post", href: "https://lnkd.in/p/gxmdk_ah" },
   },

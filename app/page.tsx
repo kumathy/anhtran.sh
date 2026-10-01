@@ -4,6 +4,7 @@ import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { LuFileText, LuMapPin } from "react-icons/lu";
 import { AwardList } from "@/components/award-list";
 import { CopyEmailButton } from "@/components/copy-email-button";
+import { Misc } from "@/components/misc";
 import { LocalTime } from "@/components/local-time";
 import { RainbowText } from "@/components/rainbow-text";
 import { Section } from "@/components/section";
@@ -138,6 +139,10 @@ export default function Home() {
 
       <Section title="Highlights">
         <AwardList />
+      </Section>
+
+      <Section title="Misc">
+        <Misc />
       </Section>
     </main>
   );
