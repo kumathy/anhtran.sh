@@ -36,7 +36,7 @@ export default function Home() {
           title="Vietnamese"
           role="img"
           aria-label="Vietnamese"
-          className="inline-block mx-0.5 h-[1.1cap] w-[1.65cap] rounded-sm align-[-0.05cap] [&>path:nth-of-type(1)]:fill-[#c94a3a] [&>path:nth-of-type(2)]:fill-[#f5d25a]"
+          className="inline-block mx-0.5 h-[0.77em] w-[1.155em] rounded-sm align-[-0.035em] supports-[height:1cap]:h-[1.1cap] supports-[height:1cap]:w-[1.65cap] supports-[height:1cap]:align-[-0.05cap] [&>path:nth-of-type(1)]:fill-[#c94a3a] [&>path:nth-of-type(2)]:fill-[#f5d25a]"
         />{" "}
         Computer Science graduate @{" "}
         <a
