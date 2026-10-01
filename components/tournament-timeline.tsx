@@ -277,7 +277,7 @@ export function TournamentTimeline({
             setPage(0);
           }}
         />
-        <p className="ml-auto text-sm text-muted">
+        <p className="w-full text-sm text-muted sm:ml-auto sm:w-auto">
           {brackets} brackets at {tournaments.length} tournaments
         </p>
       </div>
