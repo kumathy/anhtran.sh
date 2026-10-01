@@ -23,7 +23,7 @@ function ProjectItem({ project }: { project: Project }) {
               href={project.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1 text-accent underline decoration-2 underline-offset-6 transition-colors hover:text-foreground"
+              className="relative inline-flex items-center gap-1 text-accent transition-colors after:absolute after:inset-x-0 after:-bottom-1 after:h-0.5 after:bg-current hover:text-foreground"
             >
               Demo
               <LuExternalLink className="h-3 w-3" aria-hidden="true" />
