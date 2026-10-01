@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 import { LuCheck, LuMail } from "react-icons/lu";
-import { TooltipArrow } from "@/components/tooltip-arrow";
 import { site } from "@/lib/site";
 
 export function CopyEmailButton() {
@@ -40,11 +39,11 @@ export function CopyEmailButton() {
 
       <span
         aria-hidden="true"
-        className={`pointer-events-none absolute top-full left-0 z-10 mt-3 sm:left-1/2 sm:-translate-x-1/2 rounded-full border-2 border-border bg-surface px-3 py-1.5 text-sm whitespace-nowrap text-foreground transition duration-200 ease-out ${
+        className={`pointer-events-none absolute top-full -left-2 z-10 mt-3 flex items-center rounded-full border border-border bg-surface px-3 py-1.5 text-sm whitespace-nowrap text-foreground transition duration-200 ease-out md:left-1/2 md:-translate-x-1/2 ${
           copied ? "translate-y-0 opacity-100" : "-translate-y-1 opacity-0"
         }`}
       >
-        <TooltipArrow className="left-4.5 sm:left-1/2" />
+        <span className="absolute -top-1.5 left-6.75 h-2.5 w-2.5 -translate-x-1/2 rotate-45 border-t border-l border-border bg-surface md:left-1/2" />
         Email copied
       </span>
 
