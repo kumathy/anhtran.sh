@@ -67,5 +67,3 @@ export const projects: Project[] = [
     source: "https://github.com/kumathy/FitQuest",
   },
 ];
-
-export const featuredProjects = projects.filter((p) => p.featured);
