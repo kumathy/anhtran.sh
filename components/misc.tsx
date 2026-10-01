@@ -43,15 +43,20 @@ export async function Misc() {
       <NowPlaying tracks={tracks} />
 
       <p className="mt-6">
-        <span className="mr-4">
+        <span className="block sm:mr-4 sm:inline">
           <LuBookText
             className="mr-2 inline h-4 w-4 align-[-0.125em]"
             aria-hidden="true"
           />
           Reading:
         </span>
-        <cite className="italic">{book.title}</cite>{" "}
-        <span className="text-muted">- {book.authors}</span>
+        <cite className="mt-1 block italic sm:mt-0 sm:inline">
+          {book.title}
+        </cite>
+        <span className="block text-muted sm:inline">
+          <span className="hidden sm:inline"> - </span>
+          {book.authors}
+        </span>
       </p>
     </div>
   );
