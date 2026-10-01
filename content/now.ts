@@ -5,7 +5,7 @@ export type Song = {
 };
 
 export const songs: Song[] = [
-  { id: 1611483023, title: "旅路", artist: "Fujii Kaze" },
+  { id: 1555177261, title: "旅路", artist: "Fujii Kaze" },
   { id: 1739659142, title: "Birds of a Feather", artist: "Billie Eilish" },
   { id: 1444739310, title: "晚安", artist: "Sir Deer" },
   { id: 1746833484, title: "Purple Rain", artist: "Prince" },
