@@ -1,0 +1,160 @@
+import { getGameIcons } from "@/lib/steamgriddb";
+
+const API_URL = "https://api.start.gg/gql/alpha";
+const USER_SLUG = "user/f710cc98";
+const USER_ID = "1913384";
+
+const QUERY = `
+  query History($slug: String!, $userId: ID!, $page: Int!) {
+    user(slug: $slug) {
+      events(query: { page: $page, perPage: 40 }) {
+        pageInfo {
+          totalPages
+        }
+        nodes {
+          startAt
+          numEntrants
+          isOnline
+          videogame {
+            name
+            images {
+              type
+              url
+            }
+          }
+          tournament {
+            name
+            slug
+            images {
+              type
+              url
+            }
+            city
+            addrState
+            isOnline
+            startAt
+          }
+          userEntrant(userId: $userId) {
+            standing {
+              placement
+            }
+          }
+        }
+      }
+    }
+  }
+`;
+
+type ApiEvent = {
+  startAt: number | null;
+  numEntrants: number | null;
+  isOnline: boolean | null;
+  videogame: { name: string; images: { type: string; url: string }[] | null };
+  tournament: {
+    name: string;
+    slug: string;
+    images: { type: string; url: string }[] | null;
+    city: string | null;
+    addrState: string | null;
+    isOnline: boolean | null;
+    startAt: number;
+  };
+  userEntrant: { standing: { placement: number | null } | null } | null;
+};
+
+export type Bracket = {
+  game: string;
+  image: string | null;
+  placement: number | null;
+  entrants: number;
+};
+
+export type Tournament = {
+  name: string;
+  url: string;
+  logo: string | null;
+  startAt: number;
+  location: string;
+  brackets: Bracket[];
+};
+
+async function fetchEvents(token: string) {
+  const events: ApiEvent[] = [];
+
+  for (let page = 1; ; page++) {
+    const response = await fetch(API_URL, {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        query: QUERY,
+        variables: { slug: USER_SLUG, userId: USER_ID, page },
+      }),
+    });
+    if (!response.ok) {
+      throw new Error(`start.gg request failed with ${response.status}`);
+    }
+
+    const { data, errors } = await response.json();
+    if (errors?.length) {
+      throw new Error(`start.gg returned an error: ${errors[0].message}`);
+    }
+
+    const { nodes, pageInfo } = data.user.events;
+    events.push(...nodes);
+    if (page >= pageInfo.totalPages) return events;
+  }
+}
+
+export async function getTournaments(): Promise<Tournament[]> {
+  const token = process.env.STARTGG_TOKEN;
+  if (!token) throw new Error("STARTGG_TOKEN is not set");
+
+  const events = await fetchEvents(token);
+  const bySlug = new Map<string, Tournament>();
+
+  for (const event of events) {
+    const { tournament } = event;
+    const startAt = event.startAt ?? tournament.startAt;
+    const online = event.isOnline || tournament.isOnline;
+
+    const entry = bySlug.get(tournament.slug) ?? {
+      name: tournament.name,
+      url: `https://www.start.gg/${tournament.slug}`,
+      logo:
+        tournament.images?.find((image) => image.type === "profile")?.url ??
+        null,
+      startAt,
+      location: online
+        ? "Online"
+        : [tournament.city, tournament.addrState].filter(Boolean).join(", "),
+      brackets: [],
+    };
+
+    entry.startAt = Math.min(entry.startAt, startAt);
+    const images = event.videogame.images ?? [];
+    const image =
+      images.find((candidate) => candidate.type === "primary-quality") ??
+      images[0];
+
+    entry.brackets.push({
+      game: event.videogame.name,
+      image: image?.url ?? null,
+      placement: event.userEntrant?.standing?.placement ?? null,
+      entrants: event.numEntrants ?? 0,
+    });
+    bySlug.set(tournament.slug, entry);
+  }
+
+  const tournaments = [...bySlug.values()];
+  const icons = await getGameIcons(
+    tournaments.flatMap((t) => t.brackets.map((bracket) => bracket.game)),
+  );
+  for (const bracket of tournaments.flatMap((t) => t.brackets)) {
+    bracket.image = icons.get(bracket.game) ?? bracket.image;
+  }
+
+  return tournaments.sort((a, b) => b.startAt - a.startAt);
+}

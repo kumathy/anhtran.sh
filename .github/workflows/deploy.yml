@@ -29,6 +29,8 @@ jobs:
       - run: npm run build
         env:
           PAGES_BASE_PATH: ${{ steps.pages.outputs.base_path }}
+          STARTGG_TOKEN: ${{ secrets.STARTGG_TOKEN }}
+          STEAMGRIDDB_KEY: ${{ secrets.STEAMGRIDDB_KEY }}
       - uses: actions/upload-pages-artifact@v4
         with:
           path: out

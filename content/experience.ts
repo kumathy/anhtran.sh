@@ -34,7 +34,7 @@ export const experience: Role[] = [
     title: "Junior Software Engineer (Co-op)",
     period: "Jan - Apr 2024",
     href: "https://sonraisecurity.com/",
-    technologies: ["Python", "Slack API", "Grafana", "AWS", "GCP"],
+    technologies: ["Python", "Slack API", "Prometheus", "Grafana", "AWS", "GCP"],
     notes: [
       "Resolved 100+ vulnerability tickets and 20 product defects spanning back-end services and dashboard functionality",
       "Automated production alerting with an AWS Lambda function querying Prometheus and routing failures to Slack, cutting detection of stalled or failed jobs from up to a day to minutes",
