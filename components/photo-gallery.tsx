@@ -48,6 +48,7 @@ export function PhotoGallery({ photos }: { photos: Photo[] }) {
                     src={item.thumb}
                     alt=""
                     sizes="240px"
+                    loading="eager"
                     className="block h-28 w-auto sm:h-32"
                   />
                   <span className="absolute inset-x-0 bottom-0 bg-linear-to-t from-black/70 to-transparent px-2 pt-6 pb-1.5 text-left text-xs text-white">
