@@ -58,7 +58,7 @@ export default async function HobbiesPage() {
       <p className="mt-8 text-lg leading-relaxed text-pretty">
         I grew up in arcades as a kid, mindlessly button mashing my way through
         whatever fighting games were around. In uni, I found my way back to the
-        genre, and have loved it ever since: the games, the culture and the
+        genre and have loved it ever since: the games, the culture and the
         amazing community around it that&rsquo;s given me some of my closest
         friends.
       </p>
