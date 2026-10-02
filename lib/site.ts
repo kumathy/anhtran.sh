@@ -4,7 +4,7 @@ export const site = {
   school: "University of New Brunswick",
   schoolUrl: "https://www.unb.ca/",
   grad: "BCS 2026",
-  url: "https://kumathy.github.io/portfolio",
+  url: "https://anhtran.sh",
   email: "tranlamtuananh2003@gmail.com",
   resume: `${process.env.BASE_PATH}/static/Anh_Tran_resume.pdf`,
   socials: [
