@@ -97,7 +97,7 @@ export default function Home() {
       </p>
 
       <p className="mt-4 text-lg leading-relaxed text-pretty">
-        I&rsquo;m currently seeking full-time opportunities.
+        Currently seeking full-time work.
       </p>
 
       <p className="mt-4 text-lg leading-relaxed text-pretty">Find me here:</p>
