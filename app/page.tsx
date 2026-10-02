@@ -97,7 +97,7 @@ export default function Home() {
       </p>
 
       <p className="mt-4 text-lg leading-relaxed text-pretty">
-        I am currently open to any full-time software engineer/SDET roles.
+        I&rsquo;m currently seeking full-time opportunities.
       </p>
 
       <p className="mt-4 text-lg leading-relaxed text-pretty">Find me here:</p>

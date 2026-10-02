@@ -51,20 +51,16 @@ export default async function HobbiesPage() {
 
   return (
     <PageMain>
-      <h1 className="border-b-2 border-border pb-10 text-lg font-medium">Hobbies</h1>
+      <h1 className="border-b-2 border-border pb-10 text-lg font-medium">
+        Hobbies
+      </h1>
 
       <p className="mt-8 text-lg leading-relaxed text-pretty">
-        I started playing fighting games in the arcade days with{" "}
-        <a
-          href="https://en.wikipedia.org/wiki/Tekken_6"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="underline decoration-2 underline-offset-6 transition-colors hover:text-accent"
-        >
-          Tekken 6
-        </a>
-        , and I&rsquo;ve loved the genre, the culture and the community ever
-        since.
+        I grew up in arcades as a kid, mindlessly button mashing my way through
+        whatever fighting games were around. In uni, I found my way back to the
+        genre, and have loved it ever since: the games, the culture and the
+        amazing community around it that&rsquo;s given me some of my closest
+        friends.
       </p>
 
       <p className="mt-4 text-lg leading-relaxed text-pretty">
