@@ -1,6 +1,6 @@
 import { site } from "@/lib/site";
 
-const updated = new Date();
+const updated = new Date(process.env.LAST_UPDATED ?? Date.now());
 
 export function SiteFooter() {
   return (

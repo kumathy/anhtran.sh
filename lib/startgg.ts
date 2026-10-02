@@ -9,6 +9,8 @@ const GAME_NAMES: Record<string, string> = {
   "TEKKEN 8": "Tekken 8",
 };
 const USER_SLUG = "user/f710cc98";
+const LOCAL_NAME = "Green Door Smash";
+const LOCAL_ORGANIZER_SLUG = "user/4232f2eb";
 const USER_ID = "1913384";
 
 const QUERY = `
@@ -85,29 +87,39 @@ export type Tournament = {
   brackets: Bracket[];
 };
 
+async function request(
+  query: string,
+  variables: Record<string, unknown>,
+  token: string,
+) {
+  const response = await fetch(API_URL, {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${token}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ query, variables }),
+  });
+  if (!response.ok) {
+    throw new Error(`start.gg request failed with ${response.status}`);
+  }
+
+  const { data, errors } = await response.json();
+  if (errors?.length) {
+    throw new Error(`start.gg returned an error: ${errors[0].message}`);
+  }
+  return data;
+}
+
 async function fetchEvents(token: string) {
   const events: ApiEvent[] = [];
 
   for (let page = 1; ; page++) {
-    const response = await fetch(API_URL, {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${token}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        query: QUERY,
-        variables: { slug: USER_SLUG, userId: USER_ID, page },
-      }),
-    });
-    if (!response.ok) {
-      throw new Error(`start.gg request failed with ${response.status}`);
-    }
-
-    const { data, errors } = await response.json();
-    if (errors?.length) {
-      throw new Error(`start.gg returned an error: ${errors[0].message}`);
-    }
+    const data = await request(
+      QUERY,
+      { slug: USER_SLUG, userId: USER_ID, page },
+      token,
+    );
 
     const { nodes, pageInfo } = data.user.events;
     events.push(...nodes);
@@ -181,6 +193,65 @@ export async function getTournaments(): Promise<Tournament[]> {
   }
 
   return tournaments.sort((a, b) => b.startAt - a.startAt);
+}
+
+const LOCAL_QUERY = `
+  query Local($slug: String!) {
+    user(slug: $slug) {
+      upcoming: tournaments(
+        query: { page: 1, perPage: 10, filter: { upcoming: true } }
+      ) {
+        nodes {
+          ...LocalTournament
+        }
+      }
+      past: tournaments(query: { page: 1, perPage: 10, filter: { past: true } }) {
+        nodes {
+          ...LocalTournament
+        }
+      }
+    }
+  }
+
+  fragment LocalTournament on Tournament {
+    name
+    slug
+    startAt
+    images {
+      type
+      url
+    }
+  }
+`;
+
+type LocalTournament = {
+  name: string;
+  slug: string;
+  startAt: number;
+  images: { type: string; url: string }[] | null;
+};
+
+export async function getLatestLocal() {
+  const token = process.env.STARTGG_TOKEN;
+  if (!token) throw new Error("STARTGG_TOKEN is not set");
+
+  const data = await request(LOCAL_QUERY, { slug: LOCAL_ORGANIZER_SLUG }, token);
+  const isLocal = (t: LocalTournament) => t.name.includes(LOCAL_NAME);
+
+  const upcoming: LocalTournament[] = data.user.upcoming.nodes.filter(isLocal);
+  const past: LocalTournament[] = data.user.past.nodes.filter(isLocal);
+
+  const next =
+    upcoming.sort((a, b) => a.startAt - b.startAt)[0] ??
+    past.sort((a, b) => b.startAt - a.startAt)[0];
+  if (!next) return null;
+
+  const logo = next.images?.find((image) => image.type === "profile")?.url;
+
+  return {
+    url: `https://www.start.gg/${next.slug}`,
+    logo: logo ? await smallImage(logo, LOGO_SIZE, "cover") : null,
+  };
 }
 
 async function shrinkAll(

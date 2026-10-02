@@ -6,7 +6,7 @@ import { PhotoGallery } from "@/components/photo-gallery";
 import { Section } from "@/components/section";
 import { TournamentTimeline } from "@/components/tournament-timeline";
 import { photos } from "@/content/photos";
-import { getTournaments } from "@/lib/startgg";
+import { getLatestLocal, getTournaments } from "@/lib/startgg";
 
 const greenDoorInfo = [
   { key: "time", text: "Every Friday, 6 PM", Icon: LuCalendar },
@@ -43,11 +43,10 @@ const links = [
 ];
 
 export default async function HobbiesPage() {
-  const tournaments = await getTournaments();
-
-  const latestLocal = tournaments.find((tournament) =>
-    tournament.name.includes("Green Door Smash"),
-  );
+  const [tournaments, latestLocal] = await Promise.all([
+    getTournaments(),
+    getLatestLocal(),
+  ]);
 
   return (
     <PageMain>
