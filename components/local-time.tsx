@@ -15,13 +15,13 @@ function subscribeNever() {
   return () => {};
 }
 
-function formatTime(date: Date) {
+function formatTime(date: Date, precise: boolean) {
   return date.toLocaleTimeString("en-US", {
     timeZone: TIME_ZONE,
     hour: "numeric",
     minute: "2-digit",
     second: "2-digit",
-    fractionalSecondDigits: 3,
+    fractionalSecondDigits: precise ? 3 : undefined,
   });
 }
 
@@ -69,13 +69,17 @@ export function LocalTime() {
   useEffect(() => {
     if (!mounted) return;
 
+    const precise = window.matchMedia(
+      "(hover: hover) and (pointer: fine)",
+    ).matches;
     let frame = 0;
+    let timeout = 0;
     let lastMinute = -1;
 
     function tick() {
       const now = new Date();
       if (timeRef.current) {
-        timeRef.current.textContent = formatTime(now);
+        timeRef.current.textContent = formatTime(now, precise);
         timeRef.current.dateTime = now.toISOString();
       }
 
@@ -85,11 +89,18 @@ export function LocalTime() {
         lastMinute = minute;
       }
 
-      frame = requestAnimationFrame(tick);
+      if (precise) {
+        frame = requestAnimationFrame(tick);
+      } else {
+        timeout = window.setTimeout(tick, 1000 - now.getMilliseconds());
+      }
     }
 
     tick();
-    return () => cancelAnimationFrame(frame);
+    return () => {
+      cancelAnimationFrame(frame);
+      clearTimeout(timeout);
+    };
   }, [mounted]);
 
   if (!mounted) return null;
