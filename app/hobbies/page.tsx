@@ -2,8 +2,10 @@ import Image from "next/image";
 import { FaDiscord, FaInstagram } from "react-icons/fa";
 import { LuCalendar, LuDoorClosed, LuMapPin } from "react-icons/lu";
 import { PageMain } from "@/components/page-main";
+import { PhotoGallery } from "@/components/photo-gallery";
 import { Section } from "@/components/section";
 import { TournamentTimeline } from "@/components/tournament-timeline";
+import { photos } from "@/content/photos";
 import { getTournaments } from "@/lib/startgg";
 
 const greenDoorInfo = [
@@ -132,6 +134,10 @@ export default async function HobbiesPage() {
             {label}
           </a>
         ))}
+      </div>
+
+      <div className="mt-12">
+        <PhotoGallery photos={photos} />
       </div>
 
       <Section title="Tournament history">

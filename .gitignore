@@ -42,3 +42,6 @@ next-env.d.ts
 
 # resized images
 /public/generated/
+
+# original photos
+/photos-original/
