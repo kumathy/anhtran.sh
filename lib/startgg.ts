@@ -1,6 +1,9 @@
+import { smallImage } from "@/lib/images";
 import { getGameIcons } from "@/lib/steamgriddb";
 
 const API_URL = "https://api.start.gg/gql/alpha";
+const LOGO_SIZE = 80;
+const ICON_SIZE = 48;
 const USER_SLUG = "user/f710cc98";
 const USER_ID = "1913384";
 
@@ -156,5 +159,41 @@ export async function getTournaments(): Promise<Tournament[]> {
     bracket.image = icons.get(bracket.game) ?? bracket.image;
   }
 
+  const logos = await shrinkAll(
+    tournaments.map((t) => t.logo),
+    LOGO_SIZE,
+    "cover",
+  );
+  const gameImages = await shrinkAll(
+    tournaments.flatMap((t) => t.brackets.map((bracket) => bracket.image)),
+    ICON_SIZE,
+    "contain",
+  );
+  for (const tournament of tournaments) {
+    if (tournament.logo) tournament.logo = logos.get(tournament.logo) ?? null;
+    for (const bracket of tournament.brackets) {
+      if (bracket.image) bracket.image = gameImages.get(bracket.image) ?? null;
+    }
+  }
+
   return tournaments.sort((a, b) => b.startAt - a.startAt);
+}
+
+async function shrinkAll(
+  urls: (string | null)[],
+  size: number,
+  fit: "cover" | "contain",
+) {
+  const unique = [...new Set(urls.filter((url): url is string => !!url))];
+  const results = new Map<string, string>();
+
+  for (let i = 0; i < unique.length; i += 8) {
+    const batch = unique.slice(i, i + 8);
+    const small = await Promise.all(
+      batch.map((url) => smallImage(url, size, fit)),
+    );
+    batch.forEach((url, index) => results.set(url, small[index]));
+  }
+
+  return results;
 }
