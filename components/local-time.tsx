@@ -1,27 +1,28 @@
 "use client";
 
-import { useId, useState, useSyncExternalStore } from "react";
+import {
+  useEffect,
+  useId,
+  useRef,
+  useState,
+  useSyncExternalStore,
+} from "react";
 import { LuClock } from "react-icons/lu";
 
 const TIME_ZONE = "America/Moncton";
 
-let now = 0;
+function subscribeNever() {
+  return () => {};
+}
 
-function subscribe(onChange: () => void) {
-  let frame = requestAnimationFrame(function tick() {
-    now = Date.now();
-    onChange();
-    frame = requestAnimationFrame(tick);
+function formatTime(date: Date) {
+  return date.toLocaleTimeString("en-US", {
+    timeZone: TIME_ZONE,
+    hour: "numeric",
+    minute: "2-digit",
+    second: "2-digit",
+    fractionalSecondDigits: 3,
   });
-  return () => cancelAnimationFrame(frame);
-}
-
-function getNow() {
-  return now;
-}
-
-function getServerNow() {
-  return null;
 }
 
 function zoneOffsetMinutes(date: Date) {
@@ -55,13 +56,43 @@ function describeDifference(date: Date) {
 }
 
 export function LocalTime() {
-  const time = useSyncExternalStore(subscribe, getNow, getServerNow);
+  const mounted = useSyncExternalStore(
+    subscribeNever,
+    () => true,
+    () => false,
+  );
   const [open, setOpen] = useState(false);
   const tooltipId = useId();
+  const timeRef = useRef<HTMLTimeElement>(null);
+  const differenceRef = useRef<HTMLSpanElement>(null);
 
-  if (!time) return null;
+  useEffect(() => {
+    if (!mounted) return;
 
-  const date = new Date(time);
+    let frame = 0;
+    let lastMinute = -1;
+
+    function tick() {
+      const now = new Date();
+      if (timeRef.current) {
+        timeRef.current.textContent = formatTime(now);
+        timeRef.current.dateTime = now.toISOString();
+      }
+
+      const minute = Math.floor(now.getTime() / 60_000);
+      if (minute !== lastMinute && differenceRef.current) {
+        differenceRef.current.textContent = describeDifference(now);
+        lastMinute = minute;
+      }
+
+      frame = requestAnimationFrame(tick);
+    }
+
+    tick();
+    return () => cancelAnimationFrame(frame);
+  }, [mounted]);
+
+  if (!mounted) return null;
 
   return (
     <span className="inline-flex items-center gap-1.5">
@@ -75,15 +106,7 @@ export function LocalTime() {
           aria-describedby={tooltipId}
           className="cursor-pointer tabular-nums underline decoration-dotted decoration-2 underline-offset-6 transition-colors hover:text-foreground"
         >
-          <time dateTime={date.toISOString()}>
-            {date.toLocaleTimeString("en-US", {
-              timeZone: TIME_ZONE,
-              hour: "numeric",
-              minute: "2-digit",
-              second: "2-digit",
-              fractionalSecondDigits: 3,
-            })}
-          </time>
+          <time ref={timeRef} />
         </button>
         <span
           id={tooltipId}
@@ -95,7 +118,7 @@ export function LocalTime() {
           }`}
         >
           <span className="absolute -top-1.5 left-14 h-2.5 w-2.5 -translate-x-1/2 rotate-45 border-t border-l border-border bg-surface md:left-1/2" />
-          {describeDifference(date)}
+          <span ref={differenceRef} />
         </span>
       </span>
     </span>
