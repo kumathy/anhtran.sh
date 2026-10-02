@@ -1,7 +1,7 @@
 export const gameIcons: Record<string, string> = {
   "Street Fighter 6":
     "https://cdn2.steamgriddb.com/icon/fd6db04cd5c83c72e26625f063595d2c/32/512x512.png",
-  "TEKKEN 8":
+  "Tekken 8":
     "https://cdn2.steamgriddb.com/icon/27f4c93fbb02611e0d5b744a50bbc145/32/256x256.png",
   "BlazBlue: Central Fiction":
     "https://cdn2.steamgriddb.com/icon/c55291fb365d621a4403c557330d3421/32/256x256.png",

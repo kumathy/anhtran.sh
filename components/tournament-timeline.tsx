@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useEffect, useId, useRef, useState } from "react";
+import { FaStar } from "react-icons/fa";
 import {
   LuCheck,
   LuChevronDown,
@@ -12,7 +13,6 @@ import {
 import type { Bracket, Tournament } from "@/lib/startgg";
 
 const TIME_ZONE = "America/Moncton";
-const MEDALS: Record<number, string> = { 1: "🥇", 2: "🥈", 3: "🥉" };
 const LOCAL = "Green Door Smash";
 const PAGE_SIZE = 5;
 const DEFAULT_YEAR: string | null = "2025";
@@ -40,9 +40,25 @@ function ordinal(n: number) {
 
 function result(bracket: Bracket) {
   if (!bracket.placement) return "Entered";
-  const medal = MEDALS[bracket.placement];
-  const place = `${ordinal(bracket.placement)} of ${bracket.entrants}`;
-  return medal ? `${place} ${medal}` : place;
+  return `${ordinal(bracket.placement)} of ${bracket.entrants}`;
+}
+
+const PODIUM: Record<number, { label: string; color: string }> = {
+  1: { label: "1st place", color: "text-[#eab308]" },
+  2: { label: "2nd place", color: "text-[#a7a9ac]" },
+  3: { label: "3rd place", color: "text-[#94694a]" },
+};
+
+function Podium({ placement }: { placement: number | null }) {
+  const podium = placement ? PODIUM[placement] : undefined;
+  if (!podium) return null;
+
+  return (
+    <FaStar
+      className={`ml-1.5 inline h-3.5 w-3.5 align-[-0.125em] ${podium.color}`}
+      aria-label={podium.label}
+    />
+  );
 }
 
 function pageItems(page: number, count: number) {
@@ -339,6 +355,7 @@ export function TournamentTimeline({
                       <span>
                         {bracket.game}:{" "}
                         <span className="text-muted">{result(bracket)}</span>
+                        <Podium placement={bracket.placement} />
                       </span>
                     </li>
                   ))}

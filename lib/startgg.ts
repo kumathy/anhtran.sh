@@ -4,6 +4,10 @@ import { getGameIcons } from "@/lib/steamgriddb";
 const API_URL = "https://api.start.gg/gql/alpha";
 const LOGO_SIZE = 80;
 const ICON_SIZE = 48;
+const GAME_NAMES: Record<string, string> = {
+  "TEKKEN 7": "Tekken 7",
+  "TEKKEN 8": "Tekken 8",
+};
 const USER_SLUG = "user/f710cc98";
 const USER_ID = "1913384";
 
@@ -143,7 +147,7 @@ export async function getTournaments(): Promise<Tournament[]> {
       images[0];
 
     entry.brackets.push({
-      game: event.videogame.name,
+      game: GAME_NAMES[event.videogame.name] ?? event.videogame.name,
       image: image?.url ?? null,
       placement: event.userEntrant?.standing?.placement ?? null,
       entrants: event.numEntrants ?? 0,
