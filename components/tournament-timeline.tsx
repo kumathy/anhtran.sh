@@ -15,7 +15,6 @@ import type { Bracket, Tournament } from "@/lib/startgg";
 const TIME_ZONE = "America/Moncton";
 const LOCAL = "Green Door Smash";
 const PAGE_SIZE = 5;
-const DEFAULT_YEAR: string | null = "2025";
 
 function yearOf(seconds: number) {
   return new Date(seconds * 1000).toLocaleDateString("en-US", {
@@ -258,12 +257,10 @@ export function TournamentTimeline({
 }) {
   const years = [...new Set(tournaments.map((t) => yearOf(t.startAt)))];
   const brackets = tournaments.reduce((sum, t) => sum + t.brackets.length, 0);
-  const [year, setYear] = useState(
-    DEFAULT_YEAR && years.includes(DEFAULT_YEAR) ? DEFAULT_YEAR : years[0],
-  );
+  const [year, setYear] = useState(years[0]);
   const [hidden, setHidden] = useState<Hidden>({
-    locals: true,
-    online: true,
+    locals: false,
+    online: false,
   });
 
   const shown = tournaments.filter(
