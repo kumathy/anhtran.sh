@@ -108,7 +108,9 @@ function Menu({
         aria-expanded={open}
         aria-controls={panelId}
         className={`inline-flex cursor-pointer items-center gap-1.5 rounded-full border-2 px-3 py-1 text-sm transition-colors hover:border-accent hover:text-accent ${
-          highlighted ? "border-accent text-accent" : "border-border"
+          highlighted || open
+            ? "border-accent text-accent"
+            : "border-border"
         }`}
       >
         {trigger}
@@ -117,7 +119,7 @@ function Menu({
       {open ? (
         <div
           id={panelId}
-          className="absolute top-full left-0 z-10 mt-2 w-max min-w-full rounded-xl border-2 border-border bg-surface p-3 text-sm"
+          className="absolute top-full left-0 z-10 mt-2 w-max min-w-full rounded-xl border-2 border-border bg-surface p-3 text-sm transition-[opacity,translate] duration-200 ease-out starting:-translate-y-1 starting:opacity-0 motion-reduce:transition-none"
         >
           {children(() => setOpen(false))}
         </div>

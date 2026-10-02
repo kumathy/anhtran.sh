@@ -106,14 +106,14 @@ function ProjectItem({ project }: { project: Project }) {
           </div>
 
           {links.length ? (
-            <div className="mt-6 flex flex-wrap gap-3">
+            <div className="mt-6 flex flex-wrap gap-2 sm:gap-3">
               {links.map((link) => (
                 <a
                   key={link.label}
                   href={link.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 rounded-full border-2 border-border px-4 py-2 text-sm transition-colors hover:border-accent hover:text-accent"
+                  className="inline-flex flex-1 basis-24 items-center justify-center gap-1.5 rounded-full border-2 border-border px-2 py-2.5 text-sm whitespace-nowrap transition-colors hover:border-accent hover:text-accent sm:gap-2 sm:px-4 sm:py-2"
                 >
                   {link.label}
                   <LuExternalLink className="h-3.5 w-3.5" aria-hidden="true" />
