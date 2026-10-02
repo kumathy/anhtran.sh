@@ -107,7 +107,7 @@ function Menu({
         onClick={() => setOpen((value) => !value)}
         aria-expanded={open}
         aria-controls={panelId}
-        className={`inline-flex items-center gap-1.5 rounded-full border-2 px-3 py-1 text-sm transition-colors hover:border-accent hover:text-accent ${
+        className={`inline-flex cursor-pointer items-center gap-1.5 rounded-full border-2 px-3 py-1 text-sm transition-colors hover:border-accent hover:text-accent ${
           highlighted ? "border-accent text-accent" : "border-border"
         }`}
       >
@@ -155,7 +155,7 @@ function YearMenu({
                   close();
                 }}
                 aria-current={option === year ? "true" : undefined}
-                className={`w-full rounded-md px-2 py-1 text-center transition-colors hover:bg-foreground/5 hover:text-accent ${
+                className={`w-full cursor-pointer rounded-md px-2 py-1 text-center transition-colors hover:bg-foreground/5 hover:text-accent ${
                   option === year ? "bg-foreground/5 text-accent" : ""
                 }`}
               >
@@ -223,7 +223,7 @@ function FilterMenu({
             type="button"
             onClick={() => onChange({ locals: false, online: false })}
             disabled={!active}
-            className="mt-3 w-full border-t-2 border-border pt-3 text-center text-muted transition-colors hover:text-accent disabled:cursor-default disabled:opacity-50 disabled:hover:text-muted"
+            className="mt-3 w-full cursor-pointer border-t-2 border-border pt-3 text-center text-muted transition-colors hover:text-accent disabled:cursor-default disabled:opacity-50 disabled:hover:text-muted"
           >
             Show all
           </button>
@@ -356,7 +356,7 @@ export function TournamentTimeline({
             onClick={() => setPage((value) => value - 1)}
             disabled={page === 0}
             aria-label="Previous page"
-            className="inline-flex h-8 w-8 items-center justify-center rounded-full border-2 border-border text-muted transition-colors hover:border-accent hover:text-accent disabled:cursor-default disabled:opacity-40 disabled:hover:border-border disabled:hover:text-muted"
+            className="inline-flex h-8 w-8 cursor-pointer items-center justify-center rounded-full border-2 border-border text-muted transition-colors hover:border-accent hover:text-accent disabled:cursor-default disabled:opacity-40 disabled:hover:border-border disabled:hover:text-muted"
           >
             <LuChevronLeft className="h-4 w-4" aria-hidden="true" />
           </button>
@@ -373,7 +373,7 @@ export function TournamentTimeline({
                     onClick={() => setPage(item)}
                     aria-label={`Page ${item + 1}`}
                     aria-current={item === page ? "page" : undefined}
-                    className={`inline-flex h-8 min-w-8 items-center justify-center px-2 transition-colors hover:text-accent ${
+                    className={`inline-flex h-8 min-w-8 cursor-pointer items-center justify-center px-2 transition-colors hover:text-accent ${
                       item === page ? "text-accent" : "text-muted"
                     }`}
                   >
@@ -388,7 +388,7 @@ export function TournamentTimeline({
             onClick={() => setPage((value) => value + 1)}
             disabled={page === pageCount - 1}
             aria-label="Next page"
-            className="inline-flex h-8 w-8 items-center justify-center rounded-full border-2 border-border text-muted transition-colors hover:border-accent hover:text-accent disabled:cursor-default disabled:opacity-40 disabled:hover:border-border disabled:hover:text-muted"
+            className="inline-flex h-8 w-8 cursor-pointer items-center justify-center rounded-full border-2 border-border text-muted transition-colors hover:border-accent hover:text-accent disabled:cursor-default disabled:opacity-40 disabled:hover:border-border disabled:hover:text-muted"
           >
             <LuChevronRight className="h-4 w-4" aria-hidden="true" />
           </button>

@@ -67,6 +67,13 @@ export function LocalTime() {
   const differenceRef = useRef<HTMLSpanElement>(null);
 
   useEffect(() => {
+    if (!open) return;
+
+    const timeout = setTimeout(() => setOpen(false), 2000);
+    return () => clearTimeout(timeout);
+  }, [open]);
+
+  useEffect(() => {
     if (!mounted) return;
 
     const precise = window.matchMedia(
@@ -112,17 +119,19 @@ export function LocalTime() {
       <span className="group relative inline-block">
         <button
           type="button"
-          onClick={() => setOpen((value) => !value)}
+          onClick={() => {
+            if (!window.matchMedia("(hover: hover)").matches) setOpen(true);
+          }}
           onBlur={() => setOpen(false)}
           aria-describedby={tooltipId}
-          className="cursor-pointer tabular-nums underline decoration-dotted decoration-2 underline-offset-6 transition-colors hover:text-foreground"
+          className="cursor-default tabular-nums underline decoration-dotted decoration-2 underline-offset-6 transition-colors hover:text-foreground"
         >
           <time ref={timeRef} />
         </button>
         <span
           id={tooltipId}
           role="tooltip"
-          className={`pointer-events-none absolute top-full -left-2 z-10 mt-3 flex items-center rounded-full border border-border bg-surface px-3 py-1.5 text-sm whitespace-nowrap text-foreground transition duration-200 ease-out md:left-1/2 md:-translate-x-1/2 ${
+          className={`pointer-events-none absolute top-full -left-2 z-10 mt-4 flex items-center rounded-full border border-border bg-surface px-3 py-1.5 text-sm whitespace-nowrap text-foreground transition duration-200 ease-out md:left-1/2 md:-translate-x-1/2 ${
             open
               ? "translate-y-0 opacity-100"
               : "-translate-y-1 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 group-has-[:focus-visible]:translate-y-0 group-has-[:focus-visible]:opacity-100"
