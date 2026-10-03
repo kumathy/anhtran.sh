@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useId, useRef, useState } from "react";
+import { flushSync } from "react-dom";
 import { FaInstagram } from "react-icons/fa";
 import { LuX } from "react-icons/lu";
 import type { Photo } from "@/content/photos";
@@ -16,7 +17,7 @@ export function PhotoGallery({ photos }: { photos: Photo[] }) {
   const photo = photos[index];
 
   function open(next: number) {
-    setIndex(next);
+    flushSync(() => setIndex(next));
     dialogRef.current?.showModal();
   }
 
@@ -86,6 +87,7 @@ export function PhotoGallery({ photos }: { photos: Photo[] }) {
           </div>
           <div className="relative">
             <Image
+              key={photo.image.src}
               src={photo.image}
               alt={`At ${photo.event}`}
               sizes="(min-width: 800px) 736px, 100vw"
