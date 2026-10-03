@@ -48,7 +48,8 @@ export default function Home() {
         >
           {site.school}
         </a>
-        . I previously worked as a junior SDET and software engineer @{" "}
+        . Most recently, I spent three co-op terms as a junior SDET and software
+        engineer @{" "}
         <a
           href="https://sonraisecurity.com/"
           target="_blank"
@@ -57,7 +58,7 @@ export default function Home() {
         >
           Sonrai Security
         </a>
-        , building test automation and production alerting.
+        , working on cloud security across AWS and GCP.
       </p>
 
       <p className="mt-4 text-lg leading-relaxed text-pretty">
