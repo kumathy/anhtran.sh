@@ -273,6 +273,7 @@ export function TournamentTimeline({
   const [page, setPage] = useState(0);
   const pageCount = Math.ceil(shown.length / PAGE_SIZE);
   const visible = shown.slice(page * PAGE_SIZE, (page + 1) * PAGE_SIZE);
+  const view = `${year}-${hidden.locals}-${hidden.online}-${page}`;
 
   return (
     <div>
@@ -298,7 +299,10 @@ export function TournamentTimeline({
       </div>
 
       {shown.length ? (
-        <ol className="mt-8 ml-1 space-y-6 border-l-2 border-border pl-6">
+        <ol
+          key={view}
+          className="mt-8 ml-1 animate-slide-down space-y-6 border-l-2 border-border pl-6"
+        >
           {visible.map((tournament) => {
             return (
               <li
@@ -362,7 +366,9 @@ export function TournamentTimeline({
           })}
         </ol>
       ) : (
-        <p className="mt-8 text-muted">No tournaments to show for {year}.</p>
+        <p key={view} className="mt-8 animate-slide-down text-muted">
+          No tournaments to show for {year}.
+        </p>
       )}
 
       {pageCount > 1 ? (
