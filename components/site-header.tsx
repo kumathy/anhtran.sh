@@ -16,8 +16,8 @@ export function SiteHeader() {
 
   return (
     <header className="mx-auto w-full max-w-2xl px-6 pt-12 pb-10">
-      <div className="flex items-start justify-between gap-6 border-b-2 border-border pb-6">
-        <nav className="flex flex-wrap gap-x-5 gap-y-2 text-sm text-muted">
+      <div className="flex items-start justify-between gap-4 sm:gap-6 border-b-2 border-border pb-6">
+        <nav className="flex flex-wrap gap-x-4 gap-y-2 sm:gap-x-5 text-sm text-muted">
         {nav.map((item) => {
           const active = pathname === item.href;
 
