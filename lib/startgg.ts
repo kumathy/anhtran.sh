@@ -249,7 +249,6 @@ export async function getLatestLocal() {
   const logo = next.images?.find((image) => image.type === "profile")?.url;
 
   return {
-    url: `https://www.start.gg/${next.slug}`,
     logo: logo ? await smallImage(logo, LOGO_SIZE, "cover") : null,
   };
 }

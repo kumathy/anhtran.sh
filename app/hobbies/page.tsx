@@ -72,7 +72,7 @@ export default async function HobbiesPage() {
         {latestLocal ? (
           <span className="group relative inline-block">
             <a
-              href={`${latestLocal.url}/details`}
+              href="https://www.start.gg/GDS/details"
               target="_blank"
               rel="noopener noreferrer"
               aria-describedby="green-door-info"
