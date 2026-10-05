@@ -14,6 +14,7 @@ function ProjectItem({ project }: { project: Project }) {
     { label: "Demo", href: project.href },
     { label: "Source", href: project.source },
     { label: "Devpost", href: project.devpost },
+    { label: "Pitch", href: project.pitch },
   ].filter((link): link is { label: string; href: string } =>
     Boolean(link.href),
   );

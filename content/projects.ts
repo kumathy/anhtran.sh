@@ -16,6 +16,7 @@ export type Project = {
   href?: string;
   source?: string;
   devpost?: string;
+  pitch?: string;
   featured?: boolean;
 };
 
@@ -49,6 +50,7 @@ export const projects: Project[] = [
     ],
     stack: ["React", "Electron", "FastAPI", "WhisperX"],
     source: "https://github.com/kumathy/Modsquad",
+    pitch: "https://www.youtube.com/watch?v=dwXhHY42PLk&t=6793s",
     featured: true,
   },
   {
