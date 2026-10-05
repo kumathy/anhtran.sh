@@ -11,6 +11,7 @@ export type Project = {
   blurb: string;
   description?: string;
   image?: StaticImageData;
+  awards?: string[];
   stack: string[];
   href?: string;
   source?: string;
@@ -27,6 +28,7 @@ export const projects: Project[] = [
     description:
       "Trucks keep getting stuck under the overpass of the Bill Thorpe Walking Bridge on Waterloo Row, and it's become kind of a local meme. Thorpe Watch keeps a public record of past hits, catches new incidents live with a proof-of-concept vibration sensor that can be attached to the bridge, and alerts subscribers in real time.",
     image: thorpeWatchImage,
+    awards: ["Finalist @ Hack Atlantic 2026"],
     stack: ["Next.js", "TypeScript", "Python", "Flask", "Supabase", "Arduino"],
     href: "https://kumathy.github.io/thorpe-watch/",
     source: "https://github.com/kumathy/thorpe-watch",
@@ -38,7 +40,13 @@ export const projects: Project[] = [
     title: "Modsquad",
     year: "2026",
     blurb: "Automated moderation tool for content creation.",
+    description:
+      "A desktop app that finds unwanted words in your videos and bleeps them out before you upload.",
     image: modsquadImage,
+    awards: [
+      "1st @ UNB Research Expo Pitch Competition",
+      "Impact Award @ RBC Student Pitch Competition",
+    ],
     stack: ["React", "Electron", "FastAPI", "WhisperX"],
     source: "https://github.com/kumathy/Modsquad",
     featured: true,
@@ -49,6 +57,8 @@ export const projects: Project[] = [
     year: "2025",
     blurb:
       "Trivia quiz app that pulls questions from the Open Trivia Database API.",
+    description:
+      "A trivia game where you pick a category and difficulty, with questions from the Open Trivia Database.",
     image: quizzicalImage,
     stack: ["React", "JavaScript"],
     href: "https://kumathy.github.io/react-projects/quizzical/",

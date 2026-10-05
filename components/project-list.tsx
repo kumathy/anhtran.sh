@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useId, useRef } from "react";
-import { LuExternalLink, LuMaximize2, LuX } from "react-icons/lu";
+import { LuAward, LuExternalLink, LuMaximize2, LuX } from "react-icons/lu";
 import { TechList } from "@/components/tech-list";
 import type { Project } from "@/content/projects";
 
@@ -100,6 +100,20 @@ function ProjectItem({ project }: { project: Project }) {
           <p className="mt-4 text-muted">
             {project.description ?? project.blurb}
           </p>
+
+          {project.awards?.length ? (
+            <ul className="mt-4 space-y-1.5 text-sm">
+              {project.awards.map((award) => (
+                <li key={award} className="flex items-center gap-2">
+                  <LuAward
+                    className="h-4 w-4 shrink-0 text-accent"
+                    aria-hidden="true"
+                  />
+                  {award}
+                </li>
+              ))}
+            </ul>
+          ) : null}
 
           <div className="mt-4">
             <TechList items={project.stack} />
