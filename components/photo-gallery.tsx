@@ -7,9 +7,6 @@ import { FaInstagram } from "react-icons/fa";
 import { LuX } from "react-icons/lu";
 import type { Photo } from "@/content/photos";
 
-const controlClass =
-  "inline-flex h-8 w-8 items-center justify-center rounded-full border-2 border-border bg-background/80 text-muted transition-colors hover:border-accent hover:text-accent";
-
 export function PhotoGallery({ photos }: { photos: Photo[] }) {
   const [index, setIndex] = useState(0);
   const dialogRef = useRef<HTMLDialogElement>(null);
@@ -19,10 +16,6 @@ export function PhotoGallery({ photos }: { photos: Photo[] }) {
   function open(next: number) {
     flushSync(() => setIndex(next));
     dialogRef.current?.showModal();
-  }
-
-  function step(by: number) {
-    setIndex((current) => (current + by + photos.length) % photos.length);
   }
 
   return (
@@ -68,10 +61,6 @@ export function PhotoGallery({ photos }: { photos: Photo[] }) {
         onClick={(event) => {
           if (event.target === event.currentTarget) event.currentTarget.close();
         }}
-        onKeyDown={(event) => {
-          if (event.key === "ArrowLeft") step(-1);
-          if (event.key === "ArrowRight") step(1);
-        }}
         className="m-auto max-h-[calc(100%-2rem)] w-[calc(100%-2rem)] max-w-3xl translate-y-2 overflow-y-auto rounded-xl border-2 border-border bg-background p-0 text-foreground opacity-0 transition-[opacity,translate,display,overlay] transition-discrete duration-200 ease-out backdrop:bg-black/50 open:translate-y-0 open:opacity-100 starting:open:translate-y-2 starting:open:opacity-0 motion-reduce:transition-none"
       >
         <div className="p-4">
@@ -80,7 +69,7 @@ export function PhotoGallery({ photos }: { photos: Photo[] }) {
               type="button"
               onClick={() => dialogRef.current?.close()}
               aria-label="Close"
-              className={controlClass}
+              className="inline-flex h-8 w-8 items-center justify-center rounded-full border-2 border-border bg-background/80 text-muted transition-colors hover:border-accent hover:text-accent"
             >
               <LuX className="h-4 w-4" aria-hidden="true" />
             </button>
