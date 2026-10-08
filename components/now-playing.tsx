@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { LuPause, LuPlay, LuSkipBack, LuSkipForward } from "react-icons/lu";
 
 export type Track = {
@@ -20,8 +20,29 @@ export function NowPlaying({ tracks }: { tracks: Track[] }) {
   const [index, setIndex] = useState(0);
   const [playing, setPlaying] = useState(false);
   const audioRef = useRef<HTMLAudioElement>(null);
+  const playerRef = useRef<HTMLDivElement>(null);
 
   const track = tracks[index];
+
+  useEffect(() => {
+    const player = playerRef.current;
+    if (!player) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) return;
+        observer.disconnect();
+
+        const text = tracks.map((item) => item.title + item.artist).join("");
+        const family = getComputedStyle(document.body).fontFamily;
+        document.fonts.load(`1em ${family}`, text).catch(() => {});
+      },
+      { rootMargin: "200px" },
+    );
+
+    observer.observe(player);
+    return () => observer.disconnect();
+  }, [tracks]);
 
   function skip(step: number) {
     setIndex((current) => (current + step + tracks.length) % tracks.length);
@@ -39,7 +60,7 @@ export function NowPlaying({ tracks }: { tracks: Track[] }) {
   }
 
   return (
-    <div className="flex items-center gap-4">
+    <div ref={playerRef} className="flex items-center gap-4">
       <div className="h-12 w-12 shrink-0 overflow-hidden rounded-md">
         <Image
           src={track.cover}
