@@ -14,17 +14,20 @@ const outfit = Outfit({
 const lexend = Lexend({
   variable: "--font-lexend",
   subsets: ["vietnamese"],
+  display: "block",
   preload: false,
 });
 
 const mplus = M_PLUS_1({
   variable: "--font-mplus",
+  display: "block",
   preload: false,
 });
 
 const gothic = Gothic_A1({
   variable: "--font-gothic",
   weight: ["400", "500"],
+  display: "block",
   preload: false,
 });
 
