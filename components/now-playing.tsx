@@ -16,6 +16,17 @@ export type Track = {
 const controlClass =
   "inline-flex h-8 w-8 items-center justify-center rounded-full text-muted transition-colors hover:text-accent";
 
+function animationsFinished() {
+  return Promise.all(
+    document
+      .getAnimations()
+      .filter(
+        (animation) => animation.effect?.getTiming().iterations !== Infinity,
+      )
+      .map((animation) => animation.finished.catch(() => {})),
+  );
+}
+
 export function NowPlaying({ tracks }: { tracks: Track[] }) {
   const [index, setIndex] = useState(0);
   const [playing, setPlaying] = useState(false);
@@ -35,7 +46,9 @@ export function NowPlaying({ tracks }: { tracks: Track[] }) {
 
         const text = tracks.map((item) => item.title + item.artist).join("");
         const family = getComputedStyle(document.body).fontFamily;
-        document.fonts.load(`1em ${family}`, text).catch(() => {});
+        animationsFinished()
+          .then(() => document.fonts.load(`1em ${family}`, text))
+          .catch(() => {});
       },
       { rootMargin: "200px" },
     );
