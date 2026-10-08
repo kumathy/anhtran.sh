@@ -8,6 +8,7 @@ export type Track = {
   title: string;
   artist: string;
   cover: string;
+  framedCover: boolean;
   preview: string;
   href: string;
 };
@@ -39,13 +40,15 @@ export function NowPlaying({ tracks }: { tracks: Track[] }) {
 
   return (
     <div className="flex items-center gap-4">
-      <Image
-        src={track.cover}
-        alt=""
-        width={48}
-        height={48}
-        className="h-12 w-12 shrink-0 rounded-md"
-      />
+      <div className="h-12 w-12 shrink-0 overflow-hidden rounded-md">
+        <Image
+          src={track.cover}
+          alt=""
+          width={48}
+          height={48}
+          className={`h-full w-full ${track.framedCover ? "scale-107" : ""}`}
+        />
+      </div>
 
       <div className="min-w-0 flex-1">
         <a

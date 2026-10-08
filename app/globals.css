@@ -18,7 +18,8 @@
   --color-border: var(--border);
   --color-surface: var(--surface);
   --color-accent: var(--accent);
-  --font-sans: var(--font-outfit), var(--font-lexend), var(--font-mplus);
+  --font-sans: var(--font-outfit), var(--font-lexend), var(--font-mplus),
+    var(--font-gothic);
   --animate-slide-down: slide-down 200ms ease-out;
   --animate-page-in: page-in 300ms ease-out both;
   --animate-marquee: marquee 18s linear infinite;

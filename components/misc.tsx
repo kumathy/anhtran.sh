@@ -29,7 +29,10 @@ async function getTracks(): Promise<Track[]> {
       title: song.title,
       artist: song.artist,
       cover: result.artworkUrl100.replace("100x100bb", "200x200bb"),
-      preview: result.previewUrl,
+      framedCover: song.framedCover ?? false,
+      preview: song.start
+        ? `${result.previewUrl}#t=${song.start}`
+        : result.previewUrl,
       href: result.trackViewUrl,
     };
   });
