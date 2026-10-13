@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Gothic_A1, Lexend, M_PLUS_1, Outfit } from "next/font/google";
+import { Outfit } from "next/font/google";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { ThemeProvider } from "@/components/theme-provider";
@@ -9,23 +9,6 @@ import "./globals.css";
 const outfit = Outfit({
   variable: "--font-outfit",
   subsets: ["latin"],
-});
-
-const lexend = Lexend({
-  variable: "--font-lexend",
-  subsets: ["vietnamese"],
-  preload: false,
-});
-
-const mplus = M_PLUS_1({
-  variable: "--font-mplus",
-  preload: false,
-});
-
-const gothic = Gothic_A1({
-  variable: "--font-gothic",
-  weight: ["400", "500"],
-  preload: false,
 });
 
 const description = `${site.role}. ${site.school} ${site.grad}.`;
@@ -65,7 +48,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${outfit.variable} ${lexend.variable} ${mplus.variable} ${gothic.variable} h-full antialiased`}
+      className={`${outfit.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col">
         <ThemeProvider>
