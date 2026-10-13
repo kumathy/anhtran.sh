@@ -1,4 +1,8 @@
 name: Deploy
+run-name: >-
+  ${{ github.event_name == 'schedule' && 'Daily rebuild'
+  || github.event_name == 'workflow_dispatch' && 'Manual deploy'
+  || github.event.head_commit.message }}
 
 on:
   push:
