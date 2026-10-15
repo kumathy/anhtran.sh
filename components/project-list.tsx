@@ -87,6 +87,7 @@ function ProjectItem({ project }: { project: Project }) {
               <Image
                 src={project.image}
                 alt=""
+                loading="eager"
                 className="mx-auto block h-auto max-h-[60vh] w-auto max-w-full rounded-lg border-2 border-border transition-colors group-hover/image:border-accent"
               />
             </a>
@@ -94,6 +95,7 @@ function ProjectItem({ project }: { project: Project }) {
             <Image
               src={project.image}
               alt={`Screenshot of ${project.title}`}
+              loading="eager"
               className="mx-auto mt-4 block h-auto max-h-[60vh] w-auto max-w-full rounded-lg border-2 border-border"
             />
           ) : null}
