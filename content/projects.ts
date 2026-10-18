@@ -27,7 +27,7 @@ export const projects: Project[] = [
     year: "2026",
     blurb: "Real-time monitoring for Fredericton's most-hit overpass.",
     description:
-      "Trucks keep getting stuck under the overpass of the Bill Thorpe Walking Bridge on Waterloo Row, and it's become kind of a local meme. Thorpe Watch keeps a public record of past hits, catches new incidents live with a proof-of-concept vibration sensor that can be attached to the bridge, and alerts subscribers in real time.",
+      "Trucks keep hitting the Bill Thorpe Walking Bridge overpass and it's become kind of a local meme. Thorpe Watch logs past hits, catches new ones with a vibration sensor, and alerts subscribers live.",
     image: thorpeWatchImage,
     awards: ["Finalist @ Hack Atlantic 2026"],
     stack: ["Next.js", "TypeScript", "Python", "Flask", "Supabase", "Arduino"],
