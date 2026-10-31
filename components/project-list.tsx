@@ -4,11 +4,14 @@ import Image from "next/image";
 import { useId, useRef } from "react";
 import { LuAward, LuExternalLink, LuMaximize2, LuX } from "react-icons/lu";
 import { TechList } from "@/components/tech-list";
+import { useModalScrollLock } from "@/lib/use-modal-scroll-lock";
 import type { Project } from "@/content/projects";
 
 function ProjectItem({ project }: { project: Project }) {
   const dialogRef = useRef<HTMLDialogElement>(null);
   const titleId = useId();
+
+  useModalScrollLock(dialogRef);
 
   const links = [
     { label: "Demo", href: project.href },
@@ -56,7 +59,7 @@ function ProjectItem({ project }: { project: Project }) {
         onClick={(event) => {
           if (event.target === event.currentTarget) event.currentTarget.close();
         }}
-        className="m-auto max-h-[calc(100%-2rem)] w-[calc(100%-2rem)] max-w-xl translate-y-2 overflow-y-auto rounded-xl border-2 border-border bg-background p-0 text-foreground opacity-0 transition-[opacity,translate,display,overlay] transition-discrete duration-200 ease-out backdrop:bg-black/50 open:translate-y-0 open:opacity-100 starting:open:translate-y-2 starting:open:opacity-0 motion-reduce:transition-none"
+        className="m-auto max-h-[calc(100%-2rem)] w-[calc(100%-2rem)] max-w-xl translate-y-2 overflow-y-auto overscroll-contain rounded-xl border-2 border-border bg-background p-0 text-foreground opacity-0 transition-[opacity,translate,display,overlay] transition-discrete duration-200 ease-out backdrop:bg-[#00000080] open:translate-y-0 open:opacity-100 starting:open:translate-y-2 starting:open:opacity-0 motion-reduce:transition-none"
       >
         <div className="p-6">
           <div className="flex items-start justify-between gap-4">

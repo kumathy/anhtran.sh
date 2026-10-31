@@ -5,6 +5,7 @@ import { useId, useRef, useState } from "react";
 import { flushSync } from "react-dom";
 import { FaInstagram } from "react-icons/fa";
 import { LuX } from "react-icons/lu";
+import { useModalScrollLock } from "@/lib/use-modal-scroll-lock";
 import type { Photo } from "@/content/photos";
 
 export function PhotoGallery({ photos }: { photos: Photo[] }) {
@@ -12,6 +13,8 @@ export function PhotoGallery({ photos }: { photos: Photo[] }) {
   const dialogRef = useRef<HTMLDialogElement>(null);
   const titleId = useId();
   const photo = photos[index];
+
+  useModalScrollLock(dialogRef);
 
   function open(next: number) {
     flushSync(() => setIndex(next));
@@ -61,7 +64,7 @@ export function PhotoGallery({ photos }: { photos: Photo[] }) {
         onClick={(event) => {
           if (event.target === event.currentTarget) event.currentTarget.close();
         }}
-        className="m-auto max-h-[calc(100%-2rem)] w-[calc(100%-2rem)] max-w-3xl translate-y-2 overflow-y-auto rounded-xl border-2 border-border bg-background p-0 text-foreground opacity-0 transition-[opacity,translate,display,overlay] transition-discrete duration-200 ease-out backdrop:bg-black/50 open:translate-y-0 open:opacity-100 starting:open:translate-y-2 starting:open:opacity-0 motion-reduce:transition-none"
+        className="m-auto max-h-[calc(100%-2rem)] w-[calc(100%-2rem)] max-w-3xl translate-y-2 overflow-y-auto overscroll-contain rounded-xl border-2 border-border bg-background p-0 text-foreground opacity-0 transition-[opacity,translate,display,overlay] transition-discrete duration-200 ease-out backdrop:bg-[#00000080] open:translate-y-0 open:opacity-100 starting:open:translate-y-2 starting:open:opacity-0 motion-reduce:transition-none"
       >
         <div className="p-4">
           <div className="mb-3 flex justify-end">

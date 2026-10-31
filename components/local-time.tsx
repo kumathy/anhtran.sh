@@ -124,9 +124,12 @@ export function LocalTime() {
           }}
           onBlur={() => setOpen(false)}
           aria-describedby={tooltipId}
-          className="cursor-default tabular-nums underline decoration-dotted decoration-2 underline-offset-6 transition-colors hover:text-foreground"
+          className="cursor-default tabular-nums transition-colors hover:text-foreground"
         >
-          <time ref={timeRef} />
+          <time
+            ref={timeRef}
+            className="underline decoration-dotted decoration-2 underline-offset-6"
+          />
         </button>
         <span
           id={tooltipId}
