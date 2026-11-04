@@ -3,6 +3,7 @@ import fitquestImage from "@/public/images/projects/fitquest.webp";
 import modsquadImage from "@/public/images/projects/modsquad.webp";
 import quizzicalImage from "@/public/images/projects/quizzical.webp";
 import thorpeWatchImage from "@/public/images/projects/thorpe-watch.webp";
+import vaultfolioImage from "@/public/images/projects/vaultfolio.webp";
 
 export type Project = {
   slug: string;
@@ -21,6 +22,26 @@ export type Project = {
 };
 
 export const projects: Project[] = [
+  {
+    slug: "vaultfolio",
+    title: "Vaultfolio",
+    year: "2026",
+    blurb: "Monthly investing reports in Markdown, synced to Obsidian.",
+    description:
+      "Built for the note-taking app I live in. Vaultfolio connects 40+ brokerages through SnapTrade and turns your portfolio into monthly investing reports in Markdown, viewable in the browser or synced to Obsidian.",
+    image: vaultfolioImage,
+    stack: [
+      "Next.js",
+      "TypeScript",
+      "Postgres",
+      "SnapTrade",
+      "OAuth",
+      "Obsidian",
+    ],
+    href: "https://vaultfolio-tau.vercel.app",
+    source: "https://github.com/kumathy/vaultfolio",
+    featured: true,
+  },
   {
     slug: "thorpe-watch",
     title: "Thorpe Watch",
