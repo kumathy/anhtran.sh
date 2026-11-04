@@ -8,6 +8,7 @@ export type Song = {
 
 export const songs: Song[] = [
   { id: 1544426233, title: "Pure Imagination", artist: "Ruben Wan" },
+  { id: 1867885438, title: "Mice on Venus", artist: "C418", start: 2.3 },
   { id: 1479062292, title: "Virtual Insanity", artist: "Jamiroquai" },
 
   { id: 1555177261, title: "旅路", artist: "Fujii Kaze", start: 5.76 },
